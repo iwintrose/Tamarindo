@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tamarindo · August 2026 · Group Trip</title>
 <style>
-  /* [Keep your @font-face declarations exactly as they were here] */
+  /* [Keep your @font-face declarations exactly as they were] */
 
   /* ═══════════════════════════════════════
-     COLOUR TOKENS & RESPONSIVE VARS
+     COLOUR TOKENS
   ═══════════════════════════════════════ */
   :root {
     --sand:   #F2E8D9;
@@ -19,10 +19,7 @@
     --coral:  #D4614A;
     --mist:   #8BA89A;
     --purple: #7B6FAA;
-    
-    /* Responsive Spacing */
-    --page-pad: 5vw;
-    --card-gap: 12px;
+    --page-pad: 64px; /* Default desktop padding */
   }
 
   /* ═══════════════════════════════════════
@@ -37,26 +34,26 @@
     background: var(--deep);
     color: var(--sand);
     font-family: 'Lora', serif;
-    font-size: 14px; /* Slightly larger base for mobile readability */
+    font-size: 13px;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  img { max-width: 100%; height: auto; }
   a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,147,58,0.4); }
+  .mono { font-family: 'LibMono', monospace; }
 
   /* ═══════════════════════════════════════
-     COVER PAGE
+     COVER PAGE (Responsive)
   ═══════════════════════════════════════ */
   .cover {
     width: 100%;
-    min-height: 100vh; /* Full viewport height on screen */
+    min-height: 100vh;
     background: linear-gradient(155deg, #0A1A17 0%, #1A2E2A 45%, #0D2222 100%);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 80px var(--page-pad);
+    padding: 60px var(--page-pad);
     position: relative;
     overflow: hidden;
   }
@@ -68,154 +65,201 @@
     background:
       radial-gradient(ellipse 75% 55% at 72% 28%, rgba(45,107,107,0.32) 0%, transparent 58%),
       radial-gradient(ellipse 45% 45% at 12% 80%, rgba(201,147,58,0.14) 0%, transparent 52%);
-  }
-
-  .cover-circle {
-    position: absolute;
-    top: 5%; right: -10%;
-    width: 40vw; height: 40vw;
-    min-width: 250px; min-height: 250px;
-    border-radius: 50%;
-    border: 1px solid rgba(45,107,107,0.28);
+    z-index: 0;
   }
 
   .cover-title {
-    font-size: clamp(48px, 12vw, 108px); /* Scales from 48px to 108px */
+    font-size: clamp(50px, 10vw, 108px);
     font-weight: 700;
-    line-height: 0.9;
-    letter-spacing: -1px;
+    line-height: 0.88;
+    color: var(--sand);
     position: relative; z-index: 1;
-    max-width: 900px;
   }
   .cover-title em { color: var(--gold); font-style: italic; }
 
   .cover-meta {
     display: flex;
-    flex-wrap: wrap; /* Wrap on mobile */
+    flex-wrap: wrap;
     gap: 20px;
     position: relative; z-index: 1;
-    margin-top: 30px;
   }
 
   .cover-meta-item {
-    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 40px;
     border-right: 1px solid rgba(45,107,107,0.3);
   }
 
   /* ═══════════════════════════════════════
-     PAGE & SECTION HEADERS
+     PAGE STRUCTURE
   ═══════════════════════════════════════ */
   .page {
     width: 100%;
-    padding: 60px var(--page-pad);
-    max-width: 1200px; /* Limits width on ultra-wide screens */
+    padding: 52px var(--page-pad);
+    position: relative;
+    max-width: 1400px;
     margin: 0 auto;
   }
 
   .sh {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 10px;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+    padding-bottom: 14px;
     border-bottom: 1px solid rgba(45,107,107,0.25);
-    margin-bottom: 30px;
-    padding-bottom: 10px;
   }
 
-  .sh-title { font-size: clamp(20px, 5vw, 28px); font-weight: 700; }
+  .sh-title { font-size: clamp(20px, 4vw, 28px); font-weight: 700; color: var(--sand); }
 
   /* ═══════════════════════════════════════
-     DAY CARDS (Responsive Layout)
+     DAY CARDS (Responsive "Block" Design)
   ═══════════════════════════════════════ */
+  .days { display: flex; flex-direction: column; gap: 20px; }
+
   .day {
-    display: flex; /* Changed from grid to flex for better stacking */
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
     border: 1px solid rgba(45,107,107,0.2);
-    border-left: 4px solid var(--ocean);
-    background: rgba(45,107,107,0.06);
-    margin-bottom: 16px;
+    border-left: 3px solid var(--ocean);
+    background: rgba(45,107,107,0.055);
+    overflow: hidden;
   }
 
-  @media (min-width: 768px) {
-    .day { flex-direction: row; }
-    .day-label { width: 110px; flex-shrink: 0; }
-  }
+  .day.rest  { border-left-color: var(--coral); background: rgba(212,97,74,0.04); }
+  .day.night { border-left-color: var(--purple); background: rgba(123,111,170,0.05); }
 
   .day-label {
-    padding: 15px;
-    background: rgba(0,0,0,0.2);
-    text-align: center;
+    padding: 16px 20px;
+    background: rgba(0,0,0,0.22);
+    border-bottom: 1px solid rgba(45,107,107,0.15); /* Bottom border for mobile */
+    display: flex;
+    flex-direction: row; /* Row on mobile */
+    align-items: baseline;
+    gap: 12px;
   }
+
+  /* Tablet/Desktop Sidebar Shift */
+  @media (min-width: 768px) {
+    .day { flex-direction: row; }
+    .day-label { 
+      width: 100px; 
+      flex-direction: column; 
+      border-bottom: none; 
+      border-right: 1px solid rgba(45,107,107,0.15); 
+      justify-content: center;
+      text-align: left;
+    }
+  }
+
+  .day-num { font-family: 'Lora', serif; font-size: 34px; font-weight: 700; color: var(--ocean); }
+  .day.rest .day-num { color: var(--coral); }
+  .day.night .day-num { color: var(--purple); }
 
   .day-body { padding: 20px; flex: 1; }
 
   /* ═══════════════════════════════════════
-     GRID SYSTEMS (The "Magic" Part)
+     GRIDS (Responsive Stacking)
   ═══════════════════════════════════════ */
   
-  /* 3-Column Grids (Experiences, Tips) */
-  .exp-grid, .tips-grid {
+  /* Shared Grid Config */
+  .exp-grid, .tips-grid, .night-grid, .dining-grid {
     display: grid;
-    grid-template-columns: 1fr; /* 1 col on mobile */
-    gap: var(--card-gap);
+    grid-template-columns: 1fr; /* Stacks by default */
+    gap: 12px;
   }
 
-  @media (min-width: 600px) {
-    .exp-grid, .tips-grid { grid-template-columns: repeat(2, 1fr); } /* 2 col on tablet */
-  }
-
-  @media (min-width: 900px) {
-    .exp-grid, .tips-grid { grid-template-columns: repeat(3, 1fr); } /* 3 col on desktop */
-  }
-
-  /* 2-Column Grids (Nightlife, Dining) */
-  .night-grid, .dining-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--card-gap);
-  }
-
+  /* Desktop Multi-column */
   @media (min-width: 768px) {
+    .exp-grid, .tips-grid { grid-template-columns: repeat(3, 1fr); }
     .night-grid, .dining-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   /* ═══════════════════════════════════════
-     LEGEND & FOOTER
+     RESTORED CARD STYLING
+  ═══════════════════════════════════════ */
+  .exp-card {
+    background: rgba(45,107,107,0.06);
+    border: 1px solid rgba(45,107,107,0.18);
+    padding: 20px 17px;
+  }
+
+  .night-card {
+    background: rgba(123,111,170,0.06);
+    border: 1px solid rgba(123,111,170,0.16);
+    padding: 17px 18px;
+  }
+
+  .dining-card {
+    background: rgba(201,147,58,0.05);
+    border: 1px solid rgba(201,147,58,0.14);
+    padding: 16px 18px;
+  }
+
+  .tip-card {
+    background: rgba(0,0,0,0.16);
+    border: 1px solid rgba(45,107,107,0.14);
+    padding: 16px 15px;
+  }
+
+  .alert {
+    background: rgba(212,97,74,0.09);
+    border: 1px solid rgba(212,97,74,0.28);
+    border-left: 3px solid var(--coral);
+    padding: 13px 17px;
+    margin-bottom: 22px;
+  }
+
+  /* ═══════════════════════════════════════
+     FOOTER & LEGEND
   ═══════════════════════════════════════ */
   .legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    padding: 12px;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 10px 16px;
+    background: rgba(0,0,0,0.22);
+    border: 1px solid rgba(45,107,107,0.18);
   }
 
   .footer {
+    width: 100%;
+    padding: 28px var(--page-pad);
+    border-top: 1px solid rgba(45,107,107,0.22);
     display: flex;
-    flex-direction: column; /* Stack on mobile */
-    gap: 10px;
-    text-align: center;
-    padding: 40px var(--page-pad);
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(0,0,0,0.18);
   }
 
   @media (min-width: 768px) {
-    .footer { flex-direction: row; justify-content: space-between; text-align: left; }
+    .footer { flex-direction: row; justify-content: space-between; }
   }
 
   /* ═══════════════════════════════════════
-     PRINT OVERRIDES (Force A4 behavior)
+     MOBILE OVERRIDES
+  ═══════════════════════════════════════ */
+  @media (max-width: 600px) {
+    :root { --page-pad: 24px; }
+    .cover-meta-item { border-right: none; padding-right: 0; width: 100%; }
+    .sh-line { display: none; }
+    .legend-item { border-right: none; padding-right: 0; width: 100%; }
+  }
+
+  /* ═══════════════════════════════════════
+     PRINT MEDIA (Locked to A4)
   ═══════════════════════════════════════ */
   @media print {
-    :root { --page-pad: 64px; }
-    html, body { width: 794px; background: #fff; color: #000; }
-    .cover { height: 1123px; min-height: 1123px; page-break-after: always; }
-    .page { page-break-before: always; width: 794px; }
+    html, body { width: 794px; }
+    .page { width: 794px; page-break-before: always; }
     .exp-grid, .tips-grid { grid-template-columns: repeat(3, 1fr) !important; }
     .night-grid, .dining-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .day { flex-direction: row !important; }
-    .day-label { width: 96px !important; }
+    .day-label { width: 96px !important; border-right: 1px solid rgba(45,107,107,0.15) !important; border-bottom: none !important; }
     .cover-title { font-size: 90px; }
-    .tag { border: 1px solid #ccc; }
-    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
