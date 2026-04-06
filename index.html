@@ -386,7 +386,6 @@ main { padding: 72px var(--pad); max-width: 1200px; margin: 0 auto; }
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 48px var(--pad);
-  margin: 0 calc(var(--pad) * -1);
   position: relative;
   overflow: hidden;
 }
@@ -605,7 +604,7 @@ footer {
 
 /* Tablet ≥ 768px: 2-col resort, keep exc 2-col */
 @media (max-width: 1024px) and (min-width: 768px) {
-  :root { --pad: 40px; }
+  :root { --pad: 36px; }
   .resort-grid { grid-template-columns: 1fr 1fr; }
   .nn-grid { grid-template-columns: repeat(2, 1fr); }
   .car-grid { grid-template-columns: 1fr 1fr; }
@@ -613,18 +612,70 @@ footer {
 
 /* Mobile < 768px: all single column */
 @media (max-width: 767px) {
-  :root { --pad: 22px; }
+  :root { --pad: 18px; }
   html { font-size: 13px; }
-  .cover { min-height: 80vh; }
-  .cover-meta-item { border-right: none; padding-right: 0; width: 50%; margin-bottom: 10px; }
+  .cover { min-height: 80vh; padding: 40px var(--pad); }
+  .cover-meta { gap: 0; }
+  .cover-meta-item { border-right: none; padding-right: 0; width: 50%; margin-bottom: 12px; }
+  main { padding: 48px var(--pad); }
   .resort-grid { grid-template-columns: 1fr; }
   .exc-grid { grid-template-columns: 1fr; }
   .exc-card.full { grid-column: 1; }
   .nn-grid { grid-template-columns: 1fr 1fr; }
   .car-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 6px; text-align: center; }
-  .chapter { margin: 0 calc(var(--pad) * -1); padding: 40px var(--pad); }
+  footer { flex-direction: column; gap: 6px; text-align: center; padding: 20px var(--pad); }
+  .chapter { padding: 36px var(--pad); }
   .sh-line { display: none; }
+  .rec-box { padding: 20px 18px; }
+  .banner { padding: 14px 16px; }
+
+  /* Mobile table: convert to stacked cards instead of horizontal scroll */
+  .compare-wrap { border: none; border-radius: 0; overflow: visible; }
+  .compare-table,
+  .compare-table thead,
+  .compare-table tbody,
+  .compare-table th,
+  .compare-table td,
+  .compare-table tr { display: block; width: 100%; }
+  .compare-table thead { display: none; }
+  .compare-table tbody tr {
+    background: rgba(13,31,28,.55);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .compare-table tbody td {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+    font-size: .8rem;
+  }
+  .compare-table tbody td:last-child { border-bottom: none; }
+  .compare-table tbody td:first-child {
+    grid-column: 1 / -1;
+    background: rgba(45,107,107,.18);
+    color: var(--gold-l);
+    font-size: .68rem;
+    letter-spacing: .1em;
+    padding: 8px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table tbody td::before {
+    content: attr(data-label);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--mist);
+    font-weight: 600;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
 }
 
 /* Print */
@@ -882,58 +933,58 @@ footer {
         </thead>
         <tbody>
           <tr>
-            <td>Food</td>
-            <td><span class="pill pill-pass">✓ Strong</span><br>All meals + unlimited premium drinks. 4–6 restaurants.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>8 dining venues — widest variety. Reserve in advance.</td>
-            <td><span class="pill pill-warn">~ Partial</span><br>Buffet unlimited; à la carte rationed to 1 dinner per 3 nights.</td>
+            <td data-label="Criteria">Food</td>
+            <td data-label="Azura"><span class="pill pill-pass">✓ Strong</span><br>All meals + unlimited premium drinks. 4–6 restaurants.</td>
+            <td data-label="Planet Hollywood"><span class="pill pill-pass">✓ Best</span><br>8 dining venues — widest variety. Reserve in advance.</td>
+            <td data-label="Occidental Tamarindo"><span class="pill pill-warn">~ Partial</span><br>Buffet unlimited; à la carte rationed to 1 dinner per 3 nights.</td>
           </tr>
           <tr>
-            <td>Housekeeping</td>
-            <td><span class="pill pill-warn">~ Inconsistent</span><br>Reviews flag missed cleans and supply gaps.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>Daily, consistent. Best-documented of the three.</td>
-            <td><span class="pill pill-warn">~ Inconsistent</span><br>2026 reviews report missed days and long waits.</td>
+            <td data-label="Criteria">Housekeeping</td>
+            <td data-label="Azura"><span class="pill pill-warn">~ Inconsistent</span><br>Reviews flag missed cleans and supply gaps.</td>
+            <td data-label="Planet Hollywood"><span class="pill pill-pass">✓ Best</span><br>Daily, consistent. Best-documented of the three.</td>
+            <td data-label="Occidental Tamarindo"><span class="pill pill-warn">~ Inconsistent</span><br>2026 reviews report missed days and long waits.</td>
           </tr>
           <tr>
-            <td>Excursions</td>
-            <td><span class="pill pill-pass">✓ Good</span><br>Kayaking, snorkeling, ATV, whale watching, fishing via concierge.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>Nomad Tours on-site — zip-line, diving, volcano, cultural.</td>
-            <td><span class="pill pill-warn">~ Extra Cost</span><br>Available but not included — add-on rates apply.</td>
+            <td data-label="Criteria">Excursions</td>
+            <td data-label="Azura"><span class="pill pill-pass">✓ Good</span><br>Kayaking, snorkeling, ATV, whale watching, fishing via concierge.</td>
+            <td data-label="Planet Hollywood"><span class="pill pill-pass">✓ Best</span><br>Nomad Tours on-site — zip-line, diving, volcano, cultural.</td>
+            <td data-label="Occidental Tamarindo"><span class="pill pill-warn">~ Extra Cost</span><br>Available but not included — add-on rates apply.</td>
           </tr>
           <tr>
-            <td>Nightlife</td>
-            <td><span class="pill pill-warn">~ Limited</span><br>Sámara bars; no late-night clubs. Quiet by midnight.</td>
-            <td><span class="pill pill-fail">✗ Resort Only</span><br>No walkable town. On-site club and casino only.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>15-min walk to Tamarindo — bars, music, restaurants open late.</td>
+            <td data-label="Criteria">Nightlife</td>
+            <td data-label="Azura"><span class="pill pill-warn">~ Limited</span><br>Sámara bars; no late-night clubs. Quiet by midnight.</td>
+            <td data-label="Planet Hollywood"><span class="pill pill-fail">✗ Resort Only</span><br>No walkable town. On-site club and casino only.</td>
+            <td data-label="Occidental Tamarindo"><span class="pill pill-pass">✓ Best</span><br>15-min walk to Tamarindo — bars, music, restaurants open late.</td>
           </tr>
           <tr>
-            <td>Scale</td>
-            <td>74 rooms — smallest and most intimate. Adults-only.</td>
-            <td>292 suites — large resort energy. Hollywood-themed.</td>
-            <td>198 rooms — classic mass-market all-inclusive.</td>
+            <td data-label="Criteria">Scale</td>
+            <td data-label="Azura">74 rooms — smallest and most intimate. Adults-only.</td>
+            <td data-label="Planet Hollywood">292 suites — large resort energy. Hollywood-themed.</td>
+            <td data-label="Occidental Tamarindo">198 rooms — classic mass-market all-inclusive.</td>
           </tr>
           <tr>
-            <td>Vibe</td>
-            <td>Boutique, modern, adults-only. Quieter crowd by design.</td>
-            <td>High-energy, entertainment-driven. Star Class™ butler upgrade available.</td>
-            <td>Casual surf-town all-inclusive. Best for town exploration.</td>
+            <td data-label="Criteria">Vibe</td>
+            <td data-label="Azura">Boutique, modern, adults-only. Quieter crowd by design.</td>
+            <td data-label="Planet Hollywood">High-energy, entertainment-driven. Star Class™ butler upgrade available.</td>
+            <td data-label="Occidental Tamarindo">Casual surf-town all-inclusive. Best for town exploration.</td>
           </tr>
           <tr>
-            <td>Unique Feature</td>
-            <td>Presidential Suite: 3BR, private infinity pool, butler — closest villa product.</td>
-            <td>Helicopter pad; casino on-site; Star Class™ lounge access.</td>
-            <td>Walkable to Tamarindo. Leatherback turtle nesting nearby.</td>
+            <td data-label="Criteria">Unique Feature</td>
+            <td data-label="Azura">Presidential Suite: 3BR, private infinity pool, butler — closest villa product.</td>
+            <td data-label="Planet Hollywood">Helicopter pad; casino on-site; Star Class™ lounge access.</td>
+            <td data-label="Occidental Tamarindo">Walkable to Tamarindo. Leatherback turtle nesting nearby.</td>
           </tr>
           <tr>
-            <td>Airport (LIR)</td>
-            <td>~2.5 hrs drive</td>
-            <td>~35 min drive — closest of the three</td>
-            <td>~1 hr drive</td>
+            <td data-label="Criteria">Airport (LIR)</td>
+            <td data-label="Azura">~2.5 hrs drive</td>
+            <td data-label="Planet Hollywood">~35 min drive — closest of the three</td>
+            <td data-label="Occidental Tamarindo">~1 hr drive</td>
           </tr>
           <tr>
-            <td>Est. Package<br><span style="font-weight:400;font-style:italic;font-size:.68rem">per person, incl. flights</span></td>
-            <td><strong style="color:var(--gold)">~$2,800–3,400 CAD</strong></td>
-            <td><strong style="color:var(--gold)">~$3,200–3,900 CAD</strong></td>
-            <td><strong style="color:var(--gold)">~$2,400–2,900 CAD</strong></td>
+            <td data-label="Criteria">Est. Package<br><span style="font-weight:400;font-style:italic;font-size:.68rem">per person, incl. flights</span></td>
+            <td data-label="Azura"><strong style="color:var(--gold)">~$2,800–3,400 CAD</strong></td>
+            <td data-label="Planet Hollywood"><strong style="color:var(--gold)">~$3,200–3,900 CAD</strong></td>
+            <td data-label="Occidental Tamarindo"><strong style="color:var(--gold)">~$2,400–2,900 CAD</strong></td>
           </tr>
         </tbody>
       </table>
