@@ -3,816 +3,874 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Costa Rica — Isiah's Group Trip Brief</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Costa Rica · All-Inclusive Brief · Isiah's Group Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ─── RESET & TOKENS ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --forest:        #1e3320;
-    --forest-mid:    #2c4a2e;
-    --gold:          #c9a84c;
-    --gold-light:    #dfc278;
-    --cream:         #f5f0e8;
-    --text:          #1a1a1a;
-    --muted:         #5a5a5a;
-    --border:        #d8d0c0;
-    --pass:          #2e7d52;
-    --pass-bg:       #e8f5ee;
-    --fail:          #c0392b;
-    --fail-bg:       #fbeaea;
-    --warn:          #b8860b;
-    --warn-bg:       #fdf5dc;
-    --water:         #1a4a6e;
-    --water-bg:      #e8f3fa;
-    --jungle:        #1e4a28;
-    --jungle-bg:     #e8f5ee;
-    --amber:         #7a4a00;
-    --amber-bg:      #fdf3dc;
-    --volcano:       #7a2010;
-    --volcano-bg:    #fdecea;
-    --road:          #3a3050;
-    --road-bg:       #eeecf8;
-  }
+:root {
+  --deep:       #1A2E2A;
+  --deep2:      #0D1F1C;
+  --ocean:      #2D6B6B;
+  --sand:       #F2E8D9;
+  --gold:       #C9933A;
+  --gold-l:     #dfc278;
+  --coral:      #D4614A;
+  --mist:       #8BA89A;
+  --pass:       #2e7d52;
+  --pass-bg:    rgba(46,125,82,.12);
+  --fail:       #c0392b;
+  --fail-bg:    rgba(192,57,43,.1);
+  --warn:       #b8860b;
+  --warn-bg:    rgba(184,134,11,.1);
+  --water:      #1a4a6e;
+  --water-bg:   rgba(26,74,110,.1);
+  --jungle:     #2D6B6B;
+  --jungle-bg:  rgba(45,107,107,.1);
+  --amber:      #8a5500;
+  --amber-bg:   rgba(138,85,0,.1);
+  --volcano:    #9a2810;
+  --volcano-bg: rgba(154,40,16,.1);
+  --road:       #4a3a6a;
+  --road-bg:    rgba(74,58,106,.1);
+  --pad:        64px;
+  --border:     rgba(45,107,107,.18);
+}
 
-  html { font-size: 15px; }
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+html { font-size: 14px; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: 'Lora', serif;
+  background: var(--deep);
+  color: var(--sand);
+  overflow-x: hidden;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,147,58,.35); transition: border-color .2s; }
+a:hover { border-color: var(--gold); }
+strong { font-weight: 600; }
 
-  .page { max-width: 800px; margin: 0 auto; padding: 0 0 60px; }
+/* ─── COVER ─── */
+.cover {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(155deg, #0a1a17 0%, var(--deep) 45%, #0d2222 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 60px var(--pad);
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(75% 55% at 72% 28%, rgba(45,107,107,.32) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cover-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 18px;
+}
+.cover h1 {
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -.02em;
+  margin-bottom: 10px;
+}
+.cover h1 em { font-style: italic; color: var(--gold); }
+.cover-sub {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(242,232,217,.6);
+  margin-bottom: 40px;
+}
+.cover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid rgba(45,107,107,.3);
+  padding-top: 24px;
+}
+.cover-meta-item {
+  padding: 0 32px 0 0;
+  margin-right: 32px;
+  border-right: 1px solid rgba(45,107,107,.25);
+}
+.cover-meta-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.cover-meta-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 3px;
+}
+.cover-meta-value { font-size: .92rem; font-weight: 600; }
 
-  /* ─── HERO ─── */
-  .hero {
-    background: var(--forest);
-    color: #fff;
-    padding: 48px 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 80% 20%, rgba(201,168,76,.18) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .eyebrow {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .72rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    margin-bottom: 14px;
-    opacity: .9;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3.4rem;
-    font-weight: 900;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero-sub {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: rgba(255,255,255,.7);
-    margin-bottom: 32px;
-  }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    border-top: 1px solid rgba(255,255,255,.15);
-    padding-top: 24px;
-    gap: 0;
-  }
-  .meta-item {
-    padding: 0 32px 0 0;
-    margin-right: 32px;
-    border-right: 1px solid rgba(255,255,255,.15);
-  }
-  .meta-item:last-child { border-right: none; margin-right: 0; }
-  .meta-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .65rem;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.45);
-    margin-bottom: 3px;
-  }
-  .meta-value { font-size: .95rem; font-weight: 500; color: #fff; }
+/* ─── MAIN CONTENT ─── */
+main { padding: 72px var(--pad); max-width: 1200px; margin: 0 auto; }
 
-  /* ─── BODY ─── */
-  .body { padding: 0 48px; }
-  .section { margin-top: 52px; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 14px;
-  }
-  .section-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .72rem;
-    letter-spacing: .12em;
-    color: var(--gold);
-    background: var(--forest);
-    padding: 3px 8px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.55rem;
-    font-weight: 700;
-  }
+/* ─── SECTION HEADERS ─── */
+.sh {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.sh-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem;
+  letter-spacing: .14em;
+  color: var(--gold);
+  background: rgba(201,147,58,.12);
+  border: 1px solid rgba(201,147,58,.3);
+  padding: 3px 9px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.sh h2 {
+  font-size: 1.55rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.sh-line { flex: 1; height: 1px; background: var(--border); }
+.section { margin-bottom: 72px; }
 
-  /* ─── BANNER ─── */
-  .banner {
-    background: var(--forest);
-    color: #fff;
-    border-radius: 6px;
-    padding: 20px 24px;
-    margin-bottom: 28px;
-    font-size: .88rem;
-    line-height: 1.65;
-    border-left: 4px solid var(--gold);
-  }
-  .banner strong { color: var(--gold-light); }
+/* ─── BANNER ─── */
+.banner {
+  border-left: 3px solid var(--gold);
+  background: rgba(201,147,58,.07);
+  border-radius: 0 6px 6px 0;
+  padding: 16px 20px;
+  font-size: .88rem;
+  line-height: 1.65;
+  color: rgba(242,232,217,.85);
+  margin-bottom: 28px;
+}
+.banner strong { color: var(--gold-l); }
 
-  /* ─── NON-NEGOTIABLES GRID ─── */
-  .nn-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 8px;
-  }
-  .nn-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 18px 20px;
-    break-inside: avoid;
-  }
-  .nn-label {
-    font-weight: 700;
-    font-size: .92rem;
-    margin-bottom: 4px;
-  }
-  .nn-detail {
-    font-style: italic;
-    font-size: .8rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
+/* ─── NON-NEGOTIABLES ─── */
+.nn-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.nn-card {
+  background: rgba(45,107,107,.1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 16px;
+}
+.nn-icon { font-size: 1.3rem; margin-bottom: 8px; }
+.nn-label { font-weight: 600; font-size: .9rem; margin-bottom: 4px; color: var(--sand); }
+.nn-detail { font-size: .76rem; color: var(--mist); line-height: 1.5; font-style: italic; }
 
-  /* ─── VIBE TAGS ─── */
-  .vibe-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-  .vibe-tag {
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 6px 14px;
-    font-style: italic;
-    font-size: .82rem;
-    color: var(--text);
-    background: #fff;
-  }
+/* ─── VIBE TAGS ─── */
+.vibe-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.vibe-tag {
+  border: 1px solid rgba(45,107,107,.35);
+  border-radius: 4px;
+  padding: 7px 14px;
+  font-style: italic;
+  font-size: .83rem;
+  color: rgba(242,232,217,.8);
+  background: rgba(45,107,107,.07);
+}
 
-  /* ─── PROPERTY CARDS ─── */
-  .prop-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 32px;
-  }
-  .prop-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    break-inside: avoid;
-  }
-  .prop-card.full { grid-column: 1 / -1; }
-  .prop-head {
-    background: var(--forest-mid);
-    color: #fff;
-    padding: 16px 20px 14px;
-  }
-  .prop-head .tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .65rem;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    opacity: .85;
-    margin-bottom: 4px;
-  }
-  .prop-head h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  .prop-head .loc {
-    font-size: .75rem;
-    color: rgba(255,255,255,.5);
-    margin-top: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
-  .prop-body { padding: 18px 20px; }
+/* ─── RESORT CARDS — 3-COLUMN ON DESKTOP ─── */
+.resort-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+.resort-card {
+  background: rgba(13,31,28,.6);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.resort-head {
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.resort-head::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(45,107,107,.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+.resort-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 5px;
+  position: relative;
+}
+.resort-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  position: relative;
+  margin-bottom: 4px;
+}
+.resort-name a {
+  color: var(--sand);
+  border-bottom: 1px solid rgba(201,147,58,.4);
+  transition: color .2s, border-color .2s;
+}
+.resort-name a:hover { color: var(--gold); border-color: var(--gold); }
+.resort-loc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: .75;
+  position: relative;
+}
+.resort-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,.15);
+}
+.resort-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(201,147,58,.12);
+  color: var(--gold-l);
+  border: 1px solid rgba(201,147,58,.25);
+  border-bottom: 1px solid rgba(201,147,58,.25) !important;
+  white-space: nowrap;
+}
+.resort-link:hover { background: rgba(201,147,58,.2); }
+.resort-price-bar {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(201,147,58,.05);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.price-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.price-val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.price-note { font-size: .72rem; color: var(--mist); }
+.resort-body { padding: 16px 20px; flex: 1; }
 
-  /* checklist */
-  .checklist { list-style: none; margin-bottom: 0; }
-  .checklist li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 7px 0;
-    border-bottom: 1px solid #f0ece4;
-    font-size: .84rem;
-    line-height: 1.45;
-  }
-  .checklist li:last-child { border-bottom: none; }
-  .ci {
-    font-size: .72rem;
-    font-weight: 700;
-    min-width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1px;
-    flex-shrink: 0;
-  }
-  .ci-pass { background: var(--pass-bg); color: var(--pass); }
-  .ci-fail { background: var(--fail-bg); color: var(--fail); }
-  .ci-warn { background: var(--warn-bg); color: var(--warn); }
-  .c-label { font-weight: 600; }
-  .c-detail { color: var(--muted); font-size: .79rem; display: block; margin-top: 2px; }
+/* checklist */
+.checklist { list-style: none; }
+.checklist li {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(45,107,107,.12);
+  font-size: .81rem;
+  line-height: 1.5;
+  align-items: flex-start;
+}
+.checklist li:last-child { border-bottom: none; }
+.ci {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  font-size: .65rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ci-pass { background: var(--pass-bg); color: var(--pass); }
+.ci-fail { background: var(--fail-bg); color: var(--fail); }
+.ci-warn { background: var(--warn-bg); color: var(--warn); }
+.c-label { font-weight: 600; color: var(--sand); }
+.c-detail { font-size: .76rem; color: var(--mist); display: block; margin-top: 2px; font-style: italic; }
 
-  /* ─── COMPARISON TABLE ─── */
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: .82rem;
-    break-inside: avoid;
-  }
-  .compare-table thead tr { background: var(--forest); color: #fff; }
-  .compare-table thead th {
-    padding: 11px 14px;
-    text-align: left;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .7rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .compare-table thead th:first-child { width: 20%; }
-  .compare-table tbody tr { border-bottom: 1px solid var(--border); }
-  .compare-table tbody tr:nth-child(even) { background: rgba(0,0,0,.022); }
-  .compare-table tbody td { padding: 10px 14px; vertical-align: top; line-height: 1.45; }
-  .compare-table tbody td:first-child {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 600;
-    font-size: .76rem;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .pill {
-    display: inline-block;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-bottom: 3px;
-  }
-  .pill-pass { background: var(--pass-bg); color: var(--pass); }
-  .pill-fail { background: var(--fail-bg); color: var(--fail); }
-  .pill-warn { background: var(--warn-bg); color: var(--warn); }
+/* ─── COMPARISON TABLE ─── */
+.compare-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .81rem;
+  min-width: 600px;
+}
+.compare-table thead tr { background: rgba(45,107,107,.25); }
+.compare-table thead th {
+  padding: 12px 16px;
+  text-align: left;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  font-weight: 600;
+}
+.compare-table thead th:first-child { width: 18%; }
+.compare-table tbody tr { border-bottom: 1px solid var(--border); }
+.compare-table tbody tr:last-child { border-bottom: none; }
+.compare-table tbody tr:nth-child(even) { background: rgba(45,107,107,.04); }
+.compare-table tbody td { padding: 10px 16px; vertical-align: top; line-height: 1.5; color: rgba(242,232,217,.85); }
+.compare-table tbody td:first-child {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.pill {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-bottom: 3px;
+}
+.pill-pass { background: var(--pass-bg); color: #5cb87a; }
+.pill-fail { background: var(--fail-bg); color: #e07070; }
+.pill-warn { background: var(--warn-bg); color: #d4a030; }
 
-  /* ─── RECOMMENDATION BOX ─── */
-  .rec-box {
-    margin-top: 32px;
-    background: var(--forest);
-    color: #fff;
-    padding: 28px 32px;
-    border-radius: 6px;
-    break-inside: avoid;
-  }
-  .rec-box h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--gold-light);
-    margin-bottom: 12px;
-  }
-  .rec-box p {
-    font-size: .86rem;
-    line-height: 1.7;
-    color: rgba(255,255,255,.82);
-    margin-bottom: 10px;
-  }
-  .rec-box p:last-child { margin-bottom: 0; }
-  .rec-box strong { color: #fff; }
+/* ─── RECOMMENDATION ─── */
+.rec-box {
+  background: rgba(45,107,107,.15);
+  border: 1px solid rgba(45,107,107,.35);
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-top: 28px;
+}
+.rec-box h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--gold-l);
+  margin-bottom: 12px;
+}
+.rec-box p { font-size: .86rem; line-height: 1.75; color: rgba(242,232,217,.82); margin-bottom: 10px; }
+.rec-box p:last-child { margin-bottom: 0; }
 
-  /* ─── CATEGORY HEADERS (excursions) ─── */
-  .cat-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 36px 0 16px;
-  }
-  .cat-icon {
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: .95rem;
-    flex-shrink: 0;
-  }
-  .cat-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .72rem;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  .cat-divider { flex: 1; height: 1px; background: var(--border); }
+/* ─── CHAPTER DIVIDER ─── */
+.chapter {
+  background: linear-gradient(135deg, rgba(10,26,23,.95) 0%, rgba(26,46,42,.9) 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px var(--pad);
+  margin: 0 calc(var(--pad) * -1);
+  position: relative;
+  overflow: hidden;
+}
+.chapter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 80% at 15% 50%, rgba(201,147,58,.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.chapter-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 6px;
+  position: relative;
+}
+.chapter h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  position: relative;
+}
+.chapter h2 em { font-style: italic; color: var(--gold); }
+.chapter p {
+  font-style: italic;
+  color: rgba(242,232,217,.55);
+  margin-top: 8px;
+  font-size: .9rem;
+  position: relative;
+}
 
-  .cat-water  .cat-icon { background: var(--water-bg); }
-  .cat-water  .cat-title { color: var(--water); }
-  .cat-jungle .cat-icon { background: var(--jungle-bg); }
-  .cat-jungle .cat-title { color: var(--jungle); }
-  .cat-coffee .cat-icon { background: var(--amber-bg); }
-  .cat-coffee .cat-title { color: var(--amber); }
-  .cat-volcano .cat-icon { background: var(--volcano-bg); }
-  .cat-volcano .cat-title { color: var(--volcano); }
-  .cat-road   .cat-icon { background: var(--road-bg); }
-  .cat-road   .cat-title { color: var(--road); }
+/* ─── CATEGORY HEADERS ─── */
+.cat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 40px 0 16px;
+}
+.cat-icon {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .88rem;
+  flex-shrink: 0;
+}
+.cat-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .72rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.cat-div { flex: 1; height: 1px; background: var(--border); }
 
-  /* ─── EXCURSION CARDS ─── */
-  .exc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .exc-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    break-inside: avoid;
-  }
-  .exc-card.full { grid-column: 1 / -1; }
-  .exc-top { padding: 13px 18px 11px; border-bottom: 1px solid var(--border); }
-  .exc-top.water   { border-left: 4px solid var(--water); }
-  .exc-top.jungle  { border-left: 4px solid var(--jungle); }
-  .exc-top.coffee  { border-left: 4px solid var(--amber); }
-  .exc-top.volcano { border-left: 4px solid var(--volcano); }
-  .exc-top.road    { border-left: 4px solid var(--road); }
-  .exc-title {
-    font-family: 'Playfair Display', serif;
-    font-size: .98rem;
-    font-weight: 700;
-    margin-bottom: 2px;
-  }
-  .exc-sub {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .68rem;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .exc-body { padding: 13px 18px; font-size: .82rem; line-height: 1.55; color: #3a3a3a; }
-  .exc-body p { margin-bottom: 8px; }
-  .exc-body p:last-child { margin-bottom: 0; }
-  .exc-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
-  .exc-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .66rem;
-    font-weight: 600;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-    padding: 2px 9px;
-    border-radius: 20px;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .exc-tag.hi {
-    background: var(--forest);
-    color: var(--gold-light);
-    border-color: var(--forest);
-  }
+.cat-water  .cat-icon { background: var(--water-bg); }  .cat-water  .cat-title { color: #5a9fd4; }
+.cat-jungle .cat-icon { background: var(--jungle-bg); } .cat-jungle .cat-title { color: var(--ocean); }
+.cat-coffee .cat-icon { background: var(--amber-bg); }  .cat-coffee .cat-title { color: #d4a030; }
+.cat-volcano .cat-icon { background: var(--volcano-bg);} .cat-volcano .cat-title { color: #e07070; }
+.cat-road   .cat-icon { background: var(--road-bg); }   .cat-road   .cat-title { color: #9a8fd4; }
 
-  /* ─── CAR RENTAL CARD ─── */
-  .car-card {
-    background: var(--forest);
-    color: #fff;
-    border-radius: 6px;
-    padding: 26px 30px;
-    margin-top: 16px;
-    break-inside: avoid;
-  }
-  .car-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--gold-light);
-    margin-bottom: 8px;
-  }
-  .car-card p { font-size: .83rem; line-height: 1.65; color: rgba(255,255,255,.78); }
-  .car-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-    margin-top: 16px;
-  }
-  .car-col { font-size: .81rem; line-height: 1.6; }
-  .car-col-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .66rem;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.45);
-    margin-bottom: 4px;
-  }
-  .car-col p { color: rgba(255,255,255,.82); }
-  .car-col strong { color: #fff; }
-  .car-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-  .car-pill {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .68rem;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-    background: rgba(255,255,255,.1);
-    color: var(--gold-light);
-    padding: 4px 12px;
-    border-radius: 20px;
-  }
-  .car-pill.dim { color: rgba(255,255,255,.55); }
+/* ─── EXCURSION GRID ─── */
+.exc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.exc-card {
+  background: rgba(13,31,28,.55);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.exc-card.full { grid-column: 1 / -1; }
+.exc-top { padding: 12px 18px 10px; border-bottom: 1px solid var(--border); }
+.exc-top.water   { border-left: 3px solid #5a9fd4; }
+.exc-top.jungle  { border-left: 3px solid var(--ocean); }
+.exc-top.coffee  { border-left: 3px solid #d4a030; }
+.exc-top.volcano { border-left: 3px solid #e07070; }
+.exc-top.road    { border-left: 3px solid #9a8fd4; }
+.exc-title { font-size: .95rem; font-weight: 600; margin-bottom: 2px; }
+.exc-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--mist);
+}
+.exc-body { padding: 12px 18px; font-size: .8rem; line-height: 1.6; color: rgba(242,232,217,.8); }
+.exc-body p { margin-bottom: 8px; }
+.exc-body p:last-child { margin-bottom: 0; }
+.exc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.exc-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(45,107,107,.15);
+  border: 1px solid var(--border);
+  color: var(--mist);
+}
+.exc-tag.hi { background: rgba(201,147,58,.15); color: var(--gold-l); border-color: rgba(201,147,58,.3); }
 
-  /* ─── ITINERARY ─── */
-  .itinerary {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    break-inside: avoid;
-    margin-top: 32px;
-  }
-  .itin-head {
-    background: var(--forest-mid);
-    color: #fff;
-    padding: 16px 24px;
-  }
-  .itin-head h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-  }
-  .itin-head p {
-    font-size: .76rem;
-    color: rgba(255,255,255,.55);
-    margin-top: 2px;
-    font-family: 'Barlow Condensed', sans-serif;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-  }
-  .day-row {
-    display: grid;
-    grid-template-columns: 76px 1fr;
-    border-bottom: 1px solid var(--border);
-  }
-  .day-row:last-child { border-bottom: none; }
-  .day-num {
-    padding: 14px 12px;
-    background: var(--cream);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-right: 1px solid var(--border);
-    text-align: center;
-    flex-shrink: 0;
-  }
-  .day-num .d {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .62rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .day-num .n {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
-    font-weight: 900;
-    color: var(--forest);
-    line-height: 1;
-  }
-  .day-content { padding: 13px 20px; }
-  .day-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .78rem;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 4px;
-  }
-  .day-desc { font-size: .81rem; line-height: 1.55; color: #3a3a3a; }
-  .day-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
-  .day-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .63rem;
-    font-weight: 600;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-    padding: 2px 8px;
-    border-radius: 20px;
-    background: var(--cream);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .day-tag.hi {
-    background: var(--forest);
-    color: var(--gold-light);
-    border-color: var(--forest);
-  }
+/* ─── CAR RENTAL ─── */
+.car-card {
+  background: rgba(45,107,107,.12);
+  border: 1px solid rgba(45,107,107,.3);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-top: 16px;
+}
+.car-card h3 { font-size: 1rem; font-weight: 600; color: var(--gold-l); margin-bottom: 8px; }
+.car-card > p { font-size: .81rem; line-height: 1.65; color: rgba(242,232,217,.75); margin-bottom: 16px; }
+.car-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.car-col-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .63rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 4px;
+}
+.car-col p { font-size: .79rem; line-height: 1.6; color: rgba(242,232,217,.78); }
+.car-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.car-pill {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .66rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  background: rgba(201,147,58,.1);
+  color: var(--gold-l);
+  border: 1px solid rgba(201,147,58,.22);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.car-pill.dim { background: rgba(45,107,107,.12); color: var(--mist); border-color: var(--border); }
 
-  /* ─── DIVIDER ─── */
-  .chapter-divider {
-    background: var(--forest);
-    color: #fff;
-    padding: 26px 48px;
-    margin-top: 56px;
-    position: relative;
-    overflow: hidden;
-  }
-  .chapter-divider::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 20% 50%, rgba(201,168,76,.15) 0%, transparent 60%);
-  }
-  .chapter-divider .ch-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .68rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-    opacity: .8;
-    margin-bottom: 4px;
-  }
-  .chapter-divider h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-  .chapter-divider p {
-    font-size: .84rem;
-    color: rgba(255,255,255,.6);
-    margin-top: 6px;
-    font-style: italic;
-  }
+/* ─── ITINERARY ─── */
+.itinerary {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 28px;
+}
+.itin-head {
+  background: rgba(45,107,107,.2);
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.itin-head h3 { font-size: 1rem; font-weight: 600; }
+.itin-head p {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-top: 2px;
+}
+.day-row {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  border-bottom: 1px solid var(--border);
+}
+.day-row:last-child { border-bottom: none; }
+.day-num {
+  padding: 14px 10px;
+  background: rgba(45,107,107,.08);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  border-right: 1px solid var(--border);
+  text-align: center;
+  flex-shrink: 0;
+}
+.day-num .d {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .6rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--mist);
+}
+.day-num .n { font-size: 1.3rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.day-content { padding: 13px 20px; }
+.day-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold-l); margin-bottom: 4px;
+}
+.day-desc { font-size: .8rem; line-height: 1.6; color: rgba(242,232,217,.8); }
+.day-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+.day-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .62rem; font-weight: 600;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 20px;
+  background: rgba(45,107,107,.15);
+  border: 1px solid var(--border); color: var(--mist);
+}
+.day-tag.hi { background: rgba(201,147,58,.15); color: var(--gold-l); border-color: rgba(201,147,58,.3); }
 
-  /* ─── FOOTER ─── */
-  .footer {
-    margin-top: 48px;
-    border-top: 1px solid var(--border);
-    padding: 20px 48px 0;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .68rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: #aaa;
-  }
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px var(--pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  opacity: .7;
+}
 
-  /* ─── PRINT ─── */
-  @page { size: auto; margin: 10mm; }
-  @media print {
-    body { background: var(--cream); }
-    .prop-card, .exc-card, .itinerary, .rec-box, .car-card { break-inside: avoid; }
-    .section { break-inside: avoid; }
-    .chapter-divider { break-before: page; }
-  }
+/* ─── RESPONSIVE ─── */
+
+/* Tablet ≥ 768px: 2-col resort, keep exc 2-col */
+@media (max-width: 1024px) and (min-width: 768px) {
+  :root { --pad: 40px; }
+  .resort-grid { grid-template-columns: 1fr 1fr; }
+  .nn-grid { grid-template-columns: repeat(2, 1fr); }
+  .car-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Mobile < 768px: all single column */
+@media (max-width: 767px) {
+  :root { --pad: 22px; }
+  html { font-size: 13px; }
+  .cover { min-height: 80vh; }
+  .cover-meta-item { border-right: none; padding-right: 0; width: 50%; margin-bottom: 10px; }
+  .resort-grid { grid-template-columns: 1fr; }
+  .exc-grid { grid-template-columns: 1fr; }
+  .exc-card.full { grid-column: 1; }
+  .nn-grid { grid-template-columns: 1fr 1fr; }
+  .car-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 6px; text-align: center; }
+  .chapter { margin: 0 calc(var(--pad) * -1); padding: 40px var(--pad); }
+  .sh-line { display: none; }
+}
+
+/* Print */
+@page { size: auto; margin: 10mm; }
+@media print {
+  body { background: #0D1F1C; }
+  .resort-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  .exc-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .section { break-inside: avoid; }
+  .resort-card, .exc-card, .rec-box { break-inside: avoid; }
+}
 </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- ═══════════════════════════════════════════
-       HERO
-  ═══════════════════════════════════════════ -->
-  <div class="hero">
-    <div class="eyebrow">Travel Brief · Group of 4–5 · All-Inclusive Edition</div>
-    <h1>Costa <em>Rica</em></h1>
-    <p class="hero-sub">A complete guide — property comparison, excursions & sample itinerary</p>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <div class="meta-label">When</div>
-        <div class="meta-value">August 8–15, 2025</div>
+<!-- ═══ COVER ═══ -->
+<div class="cover">
+  <div class="cover-eyebrow">All-Inclusive Brief · Group of 4 Adults · Compiled for Isiah's Group Trip</div>
+  <h1>Costa <em>Rica</em></h1>
+  <p class="cover-sub">A complete guide — property comparison, excursions & sample itinerary</p>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Dates</div>
+      <div class="cover-meta-value">Aug 8–15, 2025</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Guests</div>
+      <div class="cover-meta-value">4 Adults</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Style</div>
+      <div class="cover-meta-value">All-Inclusive</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Fly Into</div>
+      <div class="cover-meta-value">LIR — Liberia</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="cover-meta-label">Season</div>
+      <div class="cover-meta-value">Green · Fewer Crowds</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ═══ SECTION 01 — NON-NEGOTIABLES ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">01</span>
+      <h2>Non-Negotiables</h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="nn-grid">
+      <div class="nn-card">
+        <div class="nn-icon">🍽</div>
+        <div class="nn-label">Food Included</div>
+        <div class="nn-detail">All meals covered in the all-inclusive rate — no surprise daily add-ons</div>
       </div>
-      <div class="meta-item">
-        <div class="meta-label">Guests</div>
-        <div class="meta-value">4 Adults</div>
+      <div class="nn-card">
+        <div class="nn-icon">🧹</div>
+        <div class="nn-label">Full Housekeeping</div>
+        <div class="nn-detail">Hotel-style daily service — not responsible for upkeep</div>
       </div>
-      <div class="meta-item">
-        <div class="meta-label">Style</div>
-        <div class="meta-value">All-Inclusive</div>
+      <div class="nn-card">
+        <div class="nn-icon">🧭</div>
+        <div class="nn-label">Excursion Access</div>
+        <div class="nn-detail">On-site or concierge-arranged — water, jungle, culture</div>
       </div>
-      <div class="meta-item">
-        <div class="meta-label">Compiled for</div>
-        <div class="meta-value">Isiah's Group Trip</div>
+      <div class="nn-card">
+        <div class="nn-icon">🌙</div>
+        <div class="nn-label">Nightlife Access</div>
+        <div class="nn-detail">Bars and clubs reachable after dark — late-night scene matters</div>
       </div>
     </div>
   </div>
 
-  <div class="body">
+  <!-- ═══ SECTION 02 — THE VIBE ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">02</span>
+      <h2>The Vibe We're After</h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="vibe-row">
+      <span class="vibe-tag">"Private, not isolated"</span>
+      <span class="vibe-tag">"Luxurious but rooted in nature"</span>
+      <span class="vibe-tag">"Adventurous by day"</span>
+      <span class="vibe-tag">"Effortlessly pampered by night"</span>
+      <span class="vibe-tag">"No trip planning on arrival"</span>
+    </div>
+  </div>
 
-    <!-- ═══ SECTION 01 — NON-NEGOTIABLES ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">01</span>
-        <h2 class="section-title">Non-Negotiables</h2>
-      </div>
-      <div class="nn-grid">
-        <div class="nn-card">
-          <div class="nn-label">🍽 Food Included</div>
-          <div class="nn-detail">All meals covered in the all-inclusive rate — no surprise daily add-ons</div>
-        </div>
-        <div class="nn-card">
-          <div class="nn-label">🧹 Full Housekeeping</div>
-          <div class="nn-detail">Hotel-style daily service — we are not responsible for upkeep</div>
-        </div>
-        <div class="nn-card">
-          <div class="nn-label">🧭 Excursion Access</div>
-          <div class="nn-detail">On-site or concierge-arranged adventures — water, jungle, culture</div>
-        </div>
-        <div class="nn-card">
-          <div class="nn-label">🌙 Nightlife Access</div>
-          <div class="nn-detail">Bars and clubs reachable after dark — late-night scene matters</div>
-        </div>
-      </div>
+  <!-- ═══ SECTION 03 — RESORT SCORECARDS ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">03</span>
+      <h2>Shortlisted Resorts — Scorecards</h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="banner">
+      All three are all-inclusive resorts evaluated against your four non-negotiables. <strong>Food and housekeeping</strong> are broadly standard across all three. The key differentiators are <strong>excursion depth</strong> and <strong>nightlife proximity</strong> — and that's where they diverge meaningfully.
     </div>
 
-    <!-- ═══ SECTION 02 — THE VIBE ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">02</span>
-        <h2 class="section-title">The Vibe We're After</h2>
+    <div class="resort-grid">
+
+      <!-- AZURA -->
+      <div class="resort-card">
+        <div class="resort-head">
+          <div class="resort-tag">Finalist A — Boutique All-Inclusive</div>
+          <div class="resort-name"><a href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=11099&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y#facilities" target="_blank">Azura Beach Resort</a></div>
+          <div class="resort-loc">📍 Sámara, Nicoya Peninsula</div>
+        </div>
+        <div class="resort-links">
+          <a class="resort-link" href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=11099&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y#facilities" target="_blank">✈ Air Canada Vacations</a>
+          <a class="resort-link" href="https://maps.google.com/?q=Azura+Beach+Resort+Samara+Costa+Rica" target="_blank">📍 Google Maps</a>
+          <a class="resort-link" href="https://www.azuraresorts.com/" target="_blank">🌐 Resort Site</a>
+        </div>
+        <div class="resort-price-bar">
+          <span class="price-label">Est. pkg price</span>
+          <span class="price-val">~$2,800–3,400 CAD</span>
+          <span class="price-note">/ person · 7 nights incl. flights</span>
+        </div>
+        <div class="resort-body">
+          <ul class="checklist">
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🍽 Food Included</span>
+              <span class="c-detail">All-inclusive: breakfast, lunch, dinner + unlimited premium drinks across 4–6 restaurants. Poolside grill, Italian, and more.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-warn">~</span>
+              <div><span class="c-label">🧹 Housekeeping</span>
+              <span class="c-detail">Listed as daily service, but guest reviews flag inconsistent execution — missed cleans and restocking gaps reported.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🧭 Excursion Access</span>
+              <span class="c-detail">Concierge-arranged: kayaking, snorkeling, ATV, whale watching, sportfishing.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-warn">~</span>
+              <div><span class="c-label">🌙 Nightlife Access</span>
+              <span class="c-detail">Sámara has bars but no late-night club scene. Quiet by midnight. 2.5 hrs from Liberia airport — most remote of the three.</span></div>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="vibe-row">
-        <span class="vibe-tag">"Private, not isolated"</span>
-        <span class="vibe-tag">"Luxurious but rooted in nature"</span>
-        <span class="vibe-tag">"Adventurous by day"</span>
-        <span class="vibe-tag">"Effortlessly pampered by night"</span>
-        <span class="vibe-tag">"No trip planning on arrival"</span>
+
+      <!-- PLANET HOLLYWOOD -->
+      <div class="resort-card">
+        <div class="resort-head">
+          <div class="resort-tag">Finalist B — Celebrity All-Inclusive</div>
+          <div class="resort-name"><a href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=11680&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y#overview" target="_blank">Planet Hollywood by Royalton</a></div>
+          <div class="resort-loc">📍 Gulf of Papagayo, Guanacaste</div>
+        </div>
+        <div class="resort-links">
+          <a class="resort-link" href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=11680&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y#overview" target="_blank">✈ Air Canada Vacations</a>
+          <a class="resort-link" href="https://maps.google.com/?q=Planet+Hollywood+Costa+Rica+Papagayo" target="_blank">📍 Google Maps</a>
+          <a class="resort-link" href="https://www.planethollywood.com/resorts/costa-rica/" target="_blank">🌐 Resort Site</a>
+        </div>
+        <div class="resort-price-bar">
+          <span class="price-label">Est. pkg price</span>
+          <span class="price-val">~$3,200–3,900 CAD</span>
+          <span class="price-note">/ person · 7 nights incl. flights</span>
+        </div>
+        <div class="resort-body">
+          <ul class="checklist">
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🍽 Food Included</span>
+              <span class="c-detail">8 dining venues all-inclusive — international, Japanese, steakhouse, Italian, Tex-Mex, BBQ. Book restaurants in advance; can fill up.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🧹 Housekeeping</span>
+              <span class="c-detail">Consistent daily service well-documented across 292 suites — best of the three on this metric.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🧭 Excursion Access</span>
+              <span class="c-detail">Nomad Tours partnership on-site — zip-lining, diving, ATV, volcano day trips, cultural. Widest menu of the three.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-fail">✗</span>
+              <div><span class="c-label">🌙 Nightlife Access</span>
+              <span class="c-detail">Remote Papagayo Peninsula — no walkable town. On-site club and casino only. You're in the resort bubble every evening.</span></div>
+            </li>
+          </ul>
+        </div>
       </div>
+
+      <!-- OCCIDENTAL TAMARINDO -->
+      <div class="resort-card">
+        <div class="resort-head">
+          <div class="resort-tag">Finalist C — Classic All-Inclusive</div>
+          <div class="resort-name"><a href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=1059&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y" target="_blank">Occidental Tamarindo</a></div>
+          <div class="resort-loc">📍 Playa Langosta, Tamarindo, Guanacaste</div>
+        </div>
+        <div class="resort-links">
+          <a class="resort-link" href="https://vacations.aircanada.com/en/packages/product-details?departureLocation=YYZ&departureLocationPlaceId=YYZ&departureLocationName=Toronto+Pearson+Intl.+Airport+(YYZ)&departureLocationSuggestionType=AIRPORTGROUP&arrivalLocationPlaceId=Liberia-CostaRica&arrivalLocationName=Liberia,+Costa+Rica&arrivalLocationSuggestionType=CITY&arrivalLocationLatitude=10.6916429&arrivalLocationLongitude=-85.4985541&no_hotel=1059&dest_dep=LIR&departingDateTime=08/08/2026&returnDateTime=15/08/2026&numberOfRooms=1&nb_adult=1&nb_child=0&r0=1-adult-0&cabinClass=economy&language=en&cubaDestination=false&tripType=RETURN&departureDateAvailable=Y&returnDateAvailable=Y" target="_blank">✈ Air Canada Vacations</a>
+          <a class="resort-link" href="https://maps.google.com/?q=Occidental+Tamarindo+Costa+Rica" target="_blank">📍 Google Maps</a>
+          <a class="resort-link" href="https://www.barcelo.com/en-us/occidental-tamarindo/" target="_blank">🌐 Resort Site</a>
+        </div>
+        <div class="resort-price-bar">
+          <span class="price-label">Est. pkg price</span>
+          <span class="price-val">~$2,400–2,900 CAD</span>
+          <span class="price-note">/ person · 7 nights incl. flights</span>
+        </div>
+        <div class="resort-body">
+          <ul class="checklist">
+            <li>
+              <span class="ci ci-warn">~</span>
+              <div><span class="c-label">🍽 Food Included</span>
+              <span class="c-detail">Buffet plus à la carte, but à la carte is rationed — 1 courtesy dinner per 3 nights. Food quality described as adequate, not excellent.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-warn">~</span>
+              <div><span class="c-label">🧹 Housekeeping</span>
+              <span class="c-detail">Daily listed, but 2025–2026 reviews report missed cleans and hour-long waits for towels.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-warn">~</span>
+              <div><span class="c-label">🧭 Excursion Access</span>
+              <span class="c-detail">Available via concierge but at extra cost — not included in the all-inclusive rate.</span></div>
+            </li>
+            <li>
+              <span class="ci ci-pass">✓</span>
+              <div><span class="c-label">🌙 Nightlife Access</span>
+              <span class="c-detail">Best of the three. Tamarindo town is a 15-min walk — bars, restaurants, live music, and an active late-night scene most nights.</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /resort-grid -->
+  </div>
+
+  <!-- ═══ SECTION 04 — SIDE BY SIDE ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">04</span>
+      <h2>Full Side-by-Side</h2>
+      <div class="sh-line"></div>
     </div>
-
-    <!-- ═══ SECTION 03 — PROPERTY SCORECARDS ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">03</span>
-        <h2 class="section-title">Shortlisted Properties — Scorecards</h2>
-      </div>
-
-      <div class="banner">
-        All three are all-inclusive resorts evaluated against your four non-negotiables. <strong>Food and housekeeping</strong> are standard across all three. The key differentiators are <strong>excursion depth</strong> and <strong>nightlife proximity</strong> — and that's where they diverge meaningfully.
-      </div>
-
-      <div class="prop-grid">
-
-        <!-- AZURA -->
-        <div class="prop-card">
-          <div class="prop-head">
-            <div class="tag">Finalist A — Boutique All-Inclusive</div>
-            <h3>Azura Beach Resort</h3>
-            <div class="loc">📍 Sámara, Nicoya Peninsula</div>
-          </div>
-          <div class="prop-body">
-            <ul class="checklist">
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🍽 Food Included</span>
-                <span class="c-detail">All-inclusive: breakfast, lunch, dinner, unlimited premium drinks across 4–6 restaurants. Poolside grill, Italian, and more.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-warn">~</span>
-                <div><span class="c-label">🧹 Full Housekeeping</span>
-                <span class="c-detail">Listed as daily service, but recent guest reviews flag inconsistent execution — missed cleans and restocking gaps reported.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🧭 Excursion Access</span>
-                <span class="c-detail">Curated tours via concierge: kayaking, snorkeling, ATV, whale watching, sportfishing. Chora Island paddle trips on-site.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-warn">~</span>
-                <div><span class="c-label">🌙 Nightlife Access</span>
-                <span class="c-detail">Sámara town has bars and a relaxed evening scene. Limited compared to Tamarindo. No late-night clubs — wraps up by midnight.</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- PLANET HOLLYWOOD -->
-        <div class="prop-card">
-          <div class="prop-head">
-            <div class="tag">Finalist B — Celebrity All-Inclusive</div>
-            <h3>Planet Hollywood by Royalton</h3>
-            <div class="loc">📍 Gulf of Papagayo, Guanacaste</div>
-          </div>
-          <div class="prop-body">
-            <ul class="checklist">
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🍽 Food Included</span>
-                <span class="c-detail">8 dining venues all-inclusive. International, Japanese, steakhouse, Italian, Tex-Mex, BBQ. Multiple reviews flag reservation system as a pain point — book ahead.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🧹 Full Housekeeping</span>
-                <span class="c-detail">Consistent daily housekeeping well-documented across 292 suites. Best of the three on this metric.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🧭 Excursion Access</span>
-                <span class="c-detail">Nomad Tours Costa Rica partnership on-site. Zip-lining, diving, ATV, cultural tours, Rincón de la Vieja volcano day trips all available.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-fail">✗</span>
-                <div><span class="c-label">🌙 Nightlife Access</span>
-                <span class="c-detail">Remote Papagayo Peninsula — no walkable town. On-site nightclub and casino, but you're locked into the resort bubble. No authentic local scene.</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- OCCIDENTAL TAMARINDO -->
-        <div class="prop-card full">
-          <div class="prop-head">
-            <div class="tag">Finalist C — Classic All-Inclusive</div>
-            <h3>Occidental Tamarindo</h3>
-            <div class="loc">📍 Playa Langosta, Tamarindo, Guanacaste</div>
-          </div>
-          <div class="prop-body">
-            <ul class="checklist">
-              <li>
-                <span class="ci ci-warn">~</span>
-                <div><span class="c-label">🍽 Food Included</span>
-                <span class="c-detail">Buffet plus à la carte restaurants included, but à la carte access is rationed: only 1 courtesy dinner per 3 nights of stay in the Italian or Japanese restaurant. Everything else is buffet. Food quality described as adequate by recent guests.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-warn">~</span>
-                <div><span class="c-label">🧹 Full Housekeeping</span>
-                <span class="c-detail">Daily housekeeping listed, but multiple 2025–2026 reviews report missed cleans, hour-long waits for towel replacements, and rooms not cleaned on some days.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-warn">~</span>
-                <div><span class="c-label">🧭 Excursion Access</span>
-                <span class="c-detail">Excursions available via concierge but at additional cost — catamaran, national parks, zip-line, jungle tours are all add-ons on top of the all-inclusive rate. Less seamless than the other two.</span></div>
-              </li>
-              <li>
-                <span class="ci ci-pass">✓</span>
-                <div><span class="c-label">🌙 Nightlife Access</span>
-                <span class="c-detail">Best of the three. Tamarindo town is a 15-minute walk — bars, restaurants, surf shops, live music, and a genuinely active late-night scene most nights of the week.</span></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ═══ SECTION 04 — SIDE BY SIDE ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <h2 class="section-title">Full Side-by-Side</h2>
-      </div>
-
+    <div class="compare-wrap">
       <table class="compare-table">
         <thead>
           <tr>
@@ -824,441 +882,429 @@
         </thead>
         <tbody>
           <tr>
-            <td>Food Included</td>
-            <td><span class="pill pill-pass">✓ Strong</span><br>All meals + unlimited premium drinks. 4–6 restaurants. Poolside, Italian, international.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>8 dining venues. Widest variety of the three. Reserve restaurants in advance.</td>
-            <td><span class="pill pill-warn">~ Partial</span><br>Buffet unlimited. À la carte rationed — 1 dinner per 3-night stay. Food quality mixed in reviews.</td>
+            <td>Food</td>
+            <td><span class="pill pill-pass">✓ Strong</span><br>All meals + unlimited premium drinks. 4–6 restaurants.</td>
+            <td><span class="pill pill-pass">✓ Best</span><br>8 dining venues — widest variety. Reserve in advance.</td>
+            <td><span class="pill pill-warn">~ Partial</span><br>Buffet unlimited; à la carte rationed to 1 dinner per 3 nights.</td>
           </tr>
           <tr>
             <td>Housekeeping</td>
-            <td><span class="pill pill-warn">~ Inconsistent</span><br>Standard service; guest reviews flag missed cleans and supply restocking gaps.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>Daily, consistent. Well-documented across review platforms. 292 suites managed well.</td>
-            <td><span class="pill pill-warn">~ Inconsistent</span><br>2025–2026 reviews report missed days and long waits. Below expectations for the category.</td>
+            <td><span class="pill pill-warn">~ Inconsistent</span><br>Reviews flag missed cleans and supply gaps.</td>
+            <td><span class="pill pill-pass">✓ Best</span><br>Daily, consistent. Best-documented of the three.</td>
+            <td><span class="pill pill-warn">~ Inconsistent</span><br>2026 reviews report missed days and long waits.</td>
           </tr>
           <tr>
             <td>Excursions</td>
-            <td><span class="pill pill-pass">✓ Good</span><br>Kayaking, snorkeling, ATV, whale watching, fishing. All via concierge, no extra booking hassle.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>Full Nomad Tours partnership on-site. Zip-lining, diving, volcano day trips, cultural. Widest menu.</td>
-            <td><span class="pill pill-warn">~ Extra Cost</span><br>Available but not included — catamaran, national parks, zip-line all at add-on rates.</td>
+            <td><span class="pill pill-pass">✓ Good</span><br>Kayaking, snorkeling, ATV, whale watching, fishing via concierge.</td>
+            <td><span class="pill pill-pass">✓ Best</span><br>Nomad Tours on-site — zip-line, diving, volcano, cultural.</td>
+            <td><span class="pill pill-warn">~ Extra Cost</span><br>Available but not included — add-on rates apply.</td>
           </tr>
           <tr>
             <td>Nightlife</td>
-            <td><span class="pill pill-warn">~ Limited</span><br>Sámara has bars but no late-night club scene. Quiet by midnight. 2.5 hrs from Liberia airport.</td>
-            <td><span class="pill pill-fail">✗ Resort Only</span><br>Remote peninsula, no walkable town. On-site club and casino only. Feels isolated.</td>
-            <td><span class="pill pill-pass">✓ Best</span><br>15-min walk to Tamarindo town. Active bar scene, live music, restaurants open late most nights.</td>
+            <td><span class="pill pill-warn">~ Limited</span><br>Sámara bars; no late-night clubs. Quiet by midnight.</td>
+            <td><span class="pill pill-fail">✗ Resort Only</span><br>No walkable town. On-site club and casino only.</td>
+            <td><span class="pill pill-pass">✓ Best</span><br>15-min walk to Tamarindo — bars, music, restaurants open late.</td>
           </tr>
           <tr>
-            <td>Resort Scale</td>
-            <td>74 rooms — smallest, most intimate. Adults-only. Quieter crowd by design.</td>
-            <td>292 suites — large resort energy. Hollywood memorabilia, entertainment-driven. Lively.</td>
-            <td>198 rooms — standard mass-market scale. Family-friendly. Casual and unpretentious.</td>
+            <td>Scale</td>
+            <td>74 rooms — smallest and most intimate. Adults-only.</td>
+            <td>292 suites — large resort energy. Hollywood-themed.</td>
+            <td>198 rooms — classic mass-market all-inclusive.</td>
           </tr>
           <tr>
-            <td>Overall Vibe</td>
-            <td>Boutique, modern, beachside. Adults-only is a genuine differentiator — no kids, calmer atmosphere.</td>
-            <td>High-energy, entertainment-led. Star Class™ butler tier adds a VIP layer. Casino on-site.</td>
-            <td>Classic surf-town all-inclusive. Laid-back. Best for guests who want to spend time in town.</td>
+            <td>Vibe</td>
+            <td>Boutique, modern, adults-only. Quieter crowd by design.</td>
+            <td>High-energy, entertainment-driven. Star Class™ butler upgrade available.</td>
+            <td>Casual surf-town all-inclusive. Best for town exploration.</td>
           </tr>
           <tr>
             <td>Unique Feature</td>
-            <td>Presidential Suite: 3BR, private infinity pool, butler. Closest thing to a group villa product.</td>
-            <td>Helicopter pad — optional scenic arrival or Rincón de la Vieja day trip. Star Class™ lounge.</td>
-            <td>Walkable to Tamarindo. Leatherback turtle nesting at nearby Baulas National Park (Oct–Feb).</td>
+            <td>Presidential Suite: 3BR, private infinity pool, butler — closest villa product.</td>
+            <td>Helicopter pad; casino on-site; Star Class™ lounge access.</td>
+            <td>Walkable to Tamarindo. Leatherback turtle nesting nearby.</td>
           </tr>
           <tr>
-            <td>Location / Airport</td>
-            <td>Sámara — 2.5 hrs from Liberia (LIR). Remote feel; less accessible for day trips.</td>
-            <td>Papagayo — 35 min from Liberia (LIR). Easiest airport access of the three.</td>
-            <td>Tamarindo — 80 km from Liberia (LIR). About 1 hr drive. Good access to northwest CR.</td>
+            <td>Airport (LIR)</td>
+            <td>~2.5 hrs drive</td>
+            <td>~35 min drive — closest of the three</td>
+            <td>~1 hr drive</td>
           </tr>
           <tr>
-            <td>August Bonus</td>
-            <td>Green season rates; quieter Nicoya beaches; whale watching offshore begins.</td>
-            <td>Papagayo microclimate — one of the driest spots in Costa Rica even in green season.</td>
-            <td>Tamarindo has a drier microclimate than the south; more consistent sun in August.</td>
+            <td>Est. Package<br><span style="font-weight:400;font-style:italic;font-size:.68rem">per person, incl. flights</span></td>
+            <td><strong style="color:var(--gold)">~$2,800–3,400 CAD</strong></td>
+            <td><strong style="color:var(--gold)">~$3,200–3,900 CAD</strong></td>
+            <td><strong style="color:var(--gold)">~$2,400–2,900 CAD</strong></td>
           </tr>
         </tbody>
       </table>
-
-      <div class="rec-box">
-        <h3>Recommendation — Based on Your Non-Negotiables</h3>
-        <p><strong>Occidental Tamarindo wins on nightlife</strong> — the only one of the three where you can walk out the front gate and be in a real town with bars, live music, and people. That's a hard advantage given it's one of your filters. The tradeoffs are real though: food is the weakest of the three, excursions cost extra, and housekeeping has been flagged in recent reviews.</p>
-        <p><strong>Planet Hollywood wins on housekeeping, food variety, and excursion access</strong> — but it's isolated on the Papagayo Peninsula with no town to explore. If the group is happy staying on-property in the evenings, the Star Class butler tier and 8-restaurant spread make it the most seamless experience. The on-site casino and club are there if you want them.</p>
-        <p><strong>Azura is the most intimate</strong> — adults-only with a boutique feel and solid food and activities — but Sámara's nightlife is the quietest of the three areas, and it's the furthest from the airport.</p>
-        <p>If <strong>nightlife is non-negotiable</strong>: Occidental Tamarindo. If <strong>quality and seamlessness are the priority</strong>: Planet Hollywood. If <strong>intimate and adults-only</strong> matters most: Azura.</p>
-      </div>
     </div>
 
-  </div><!-- /body -->
-
-  <!-- ═══════════════════════════════════════════
-       CHAPTER DIVIDER — EXCURSIONS
-  ═══════════════════════════════════════════ -->
-  <div class="chapter-divider">
-    <div class="ch-num">Part Two</div>
-    <h2>Excursion Planner</h2>
-    <p>What to do between the pool and the sunset — from Santa Teresa or any of the three properties</p>
+    <div class="rec-box">
+      <h3>Recommendation — Based on Your Non-Negotiables</h3>
+      <p><strong>Occidental Tamarindo wins on nightlife</strong> — the only one where you can walk out the front gate and be in a real town with bars, live music, and people. It's also the most affordable. The tradeoffs are real: food is the weakest, excursions cost extra, and housekeeping has been flagged in recent reviews.</p>
+      <p><strong>Planet Hollywood wins on housekeeping, food variety, and excursion access</strong> — but it's isolated on the Papagayo Peninsula with no town to explore. If the group is happy staying on-property in the evenings, the 8-restaurant spread and Nomad Tours partnership make it the most seamless all-inclusive experience. Closest to the airport too.</p>
+      <p><strong>Azura is the most intimate</strong> — adults-only with a boutique feel, solid food, and good activities — but Sámara's nightlife is the quietest of the three areas and it's the furthest drive from LIR.</p>
+      <p>If <strong>nightlife is non-negotiable</strong> → Occidental Tamarindo. If <strong>quality and seamlessness</strong> are the priority → Planet Hollywood. If <strong>boutique and adults-only</strong> matters most → Azura.</p>
+    </div>
   </div>
 
-  <div class="body">
+</main>
 
-    <!-- ═══ SECTION 05 — EXCURSIONS ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">05</span>
-        <h2 class="section-title">Excursion Wishlist — Built Out</h2>
-      </div>
-
-      <div class="banner">
-        Every excursion on this list is achievable from all three properties. The <strong>Arenal Volcano</strong> and a proper <strong>coffee tour</strong> require an overnight or long day trip (4–5 hrs from Guanacaste, or a short domestic flight). Everything else — waterfall, kayaking, ATV — is within 30–90 minutes. <strong>A rental 4x4 unlocks the region on your own terms.</strong>
-      </div>
-
-      <!-- WATER -->
-      <div class="cat-header cat-water">
-        <div class="cat-icon">🌊</div>
-        <div class="cat-title">Water &amp; Kayaking</div>
-        <div class="cat-divider"></div>
-      </div>
-      <div class="exc-grid">
-        <div class="exc-card">
-          <div class="exc-top water">
-            <div class="exc-title">Bioluminescent Night Kayak</div>
-            <div class="exc-sub">Paquera Bay · Evening · ~$65/person</div>
-          </div>
-          <div class="exc-body">
-            <p>Paddle after dark while bioluminescent algae light up the water around your kayak — one of the few year-round spots on earth for this phenomenon. Tours run 5:45–7:30 pm. Group size capped at 10, so you could book the full boat privately.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Year-Round</span>
-              <span class="exc-tag">~$65/person</span>
-              <span class="exc-tag">2 hrs</span>
-              <span class="exc-tag">Evening</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top water">
-            <div class="exc-title">Tortuga Island Snorkel Cruise</div>
-            <div class="exc-sub">Nicoya Gulf · Full day · ~$85–110/person</div>
-          </div>
-          <div class="exc-body">
-            <p>Boat cruise to Isla Tortuga — snorkeling over a volcanic reef with angelfish, moray eels, and spotted eagle rays. White sand beach time and fresh fruit included. One of the most popular full-day excursions from the Nicoya Peninsula and Tamarindo.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Top Rated</span>
-              <span class="exc-tag">~$85–110/person</span>
-              <span class="exc-tag">Full day</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top water">
-            <div class="exc-title">Lake Arenal Kayak</div>
-            <div class="exc-sub">La Fortuna · Combine with Volcano Day</div>
-          </div>
-          <div class="exc-body">
-            <p>Costa Rica's largest lake at the foot of Arenal Volcano — kayaking or stand-up paddleboarding with the volcano as your backdrop. Best combined with the Arenal day trip. Sunset boat cruises also available for a more relaxed version.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">Combine w/ Volcano</span>
-              <span class="exc-tag">~$60/person</span>
-              <span class="exc-tag">Half day</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top water">
-            <div class="exc-title">Private Sportfishing Charter</div>
-            <div class="exc-sub">Pacific Coast · 4–8 hrs · ~$600–900 boat</div>
-          </div>
-          <div class="exc-body">
-            <p>Private inshore charter targeting yellowfin tuna, mahi-mahi, roosterfish, and wahoo. Experienced crews know the Pacific waters. Look for dolphins and whales on the way out — common in August.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">Private Charter</span>
-              <span class="exc-tag">~$600–900 whole boat</span>
-              <span class="exc-tag">Morning</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- WATERFALL & JUNGLE -->
-      <div class="cat-header cat-jungle">
-        <div class="cat-icon">🌿</div>
-        <div class="cat-title">Waterfalls &amp; Jungle</div>
-        <div class="cat-divider"></div>
-      </div>
-      <div class="exc-grid">
-        <div class="exc-card">
-          <div class="exc-top jungle">
-            <div class="exc-title">Montezuma Waterfalls</div>
-            <div class="exc-sub">Montezuma Village · 45 min · Free entry</div>
-          </div>
-          <div class="exc-body">
-            <p>Three cascading falls with natural swimming pools — the most famous waterfall on the Nicoya Peninsula. A 1 km jungle hike from the road. Swimmers can climb to upper pools for cliff jumping from 25m. The road trip itself is half the experience: river crossings, ocean views, and deserted beaches en route.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Bucket List</span>
-              <span class="exc-tag">Free (~$1.50 upper pools)</span>
-              <span class="exc-tag">Half day</span>
-              <span class="exc-tag">Bring water shoes</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top jungle">
-            <div class="exc-title">La Fortuna Waterfall</div>
-            <div class="exc-sub">La Fortuna · Day trip or overnight</div>
-          </div>
-          <div class="exc-body">
-            <p>A 70m cascade into a crystal-clear pool at the base of Arenal Volcano. 500 steps down (and back up). Best combined with the Arenal day trip. Combo tours include the volcano hike, hanging bridges, and hot springs all in one day.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">Combine w/ Volcano</span>
-              <span class="exc-tag">~$20 entry</span>
-              <span class="exc-tag">Full day</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top jungle">
-            <div class="exc-title">Canopy Zip-Line</div>
-            <div class="exc-sub">Cabo Blanco Reserve / Rincón de la Vieja · ~$55–75/person</div>
-          </div>
-          <div class="exc-body">
-            <p>Nearly a mile of zip-line through jungle canopy bordering Costa Rica's first protected reserve. 11 platforms high in the trees with ocean views and regular howler monkey sightings. Planet Hollywood guests can access the Rincón de la Vieja adventure centre, which includes zip-line, horseback, and hot springs as a combo.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">~$55–75/person</span>
-              <span class="exc-tag">2–3 hrs</span>
-              <span class="exc-tag">All levels</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top jungle">
-            <div class="exc-title">Wildlife Refuge Guided Tour</div>
-            <div class="exc-sub">Curú / Cabo Blanco · Private · ~$80/person</div>
-          </div>
-          <div class="exc-body">
-            <p>Private guided tour with a certified naturalist through secluded beach trails. Spot howler monkeys, scarlet macaws, iguanas, and coatis. Fully customizable. Pairs well with the bioluminescent night kayak for a full nature day.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">Private Tour</span>
-              <span class="exc-tag">~$80/person</span>
-              <span class="exc-tag">Half day</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- COFFEE -->
-      <div class="cat-header cat-coffee">
-        <div class="cat-icon">☕</div>
-        <div class="cat-title">Coffee Tour</div>
-        <div class="cat-divider"></div>
-      </div>
-      <div class="exc-grid">
-        <div class="exc-card">
-          <div class="exc-top coffee">
-            <div class="exc-title">Don Juan Coffee &amp; Chocolate Tour</div>
-            <div class="exc-sub">La Fortuna · Best combined with Arenal</div>
-          </div>
-          <div class="exc-body">
-            <p>Hands-on farm experience covering the full bean-to-cup journey — plus cacao and sugar cane. The Arenal highlands produce some of Costa Rica's finest coffee. Guided tasting of multiple roasts included. Best positioned as part of the Arenal overnight so you're not making the trip twice.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Best Combo w/ Volcano</span>
-              <span class="exc-tag">~$35–50/person</span>
-              <span class="exc-tag">2–3 hrs</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top coffee">
-            <div class="exc-title">Café Monteverde Cloud Forest Tour</div>
-            <div class="exc-sub">Monteverde · 5 hrs from Guanacaste</div>
-          </div>
-          <div class="exc-body">
-            <p>Generations-old coffee farm in the misty cloud forest — volcanic soil, high altitude, and family traditions over a century old. One of the most atmospheric coffee experiences in Costa Rica. Best as a Monteverde stopover rather than a standalone day trip from the coast.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">Best: Monteverde stopover</span>
-              <span class="exc-tag">~$30/person</span>
-              <span class="exc-tag">1.5 hrs tour</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VOLCANO -->
-      <div class="cat-header cat-volcano">
-        <div class="cat-icon">🌋</div>
-        <div class="cat-title">Volcano</div>
-        <div class="cat-divider"></div>
-      </div>
-      <div class="exc-grid">
-        <div class="exc-card full">
-          <div class="exc-top volcano">
-            <div class="exc-title">Arenal Volcano — Full Day or Overnight ✦ Signature Trip</div>
-            <div class="exc-sub">La Fortuna · ~4–5 hrs drive or short domestic flight from Guanacaste</div>
-          </div>
-          <div class="exc-body">
-            <p>Costa Rica's most iconic volcano. Guided rainforest walks along the lava base, hanging bridges through the cloud canopy, La Fortuna Waterfall, Don Juan coffee tour, and the Tabacon Hot Springs (20+ thermal pools fed by the volcano, lit up at night) — all doable in one big day or a comfortable overnight.</p>
-            <p><strong>Getting there:</strong> From Guanacaste (all three properties) it's roughly 3.5–4 hrs by car. The faster option is a short domestic flight from Liberia (LIR) or Tambor to La Fortuna — roughly 40 minutes. Highly recommended if doing this as a day trip without losing two full days to the road.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Signature Experience</span>
-              <span class="exc-tag">Domestic flight: ~$150–200pp each way</span>
-              <span class="exc-tag">Drive: 3.5–4 hrs from Guanacaste</span>
-              <span class="exc-tag">Best as overnight</span>
-              <span class="exc-tag">Hot springs included in most tours</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top volcano">
-            <div class="exc-title">Arenal Volcano Base Hike</div>
-            <div class="exc-sub">Arenal National Park · Guided · ~$50/person</div>
-          </div>
-          <div class="exc-body">
-            <p>Guided rainforest hike along old lava flows with a naturalist. Mostly flat to moderate. You can't summit legally, but the base hike with wildlife spotting is the right experience. Go in the morning before clouds roll in.</p>
-            <div class="exc-tags">
-              <span class="exc-tag">~$50/person</span>
-              <span class="exc-tag">3–4 hrs</span>
-              <span class="exc-tag">Morning</span>
-            </div>
-          </div>
-        </div>
-        <div class="exc-card">
-          <div class="exc-top volcano">
-            <div class="exc-title">Tabacon Hot Springs</div>
-            <div class="exc-sub">La Fortuna · Volcano-fed thermal pools</div>
-          </div>
-          <div class="exc-body">
-            <p>Costa Rica's largest network of naturally flowing thermal mineral springs — 20+ pools from 22–40°C at the base of Arenal. Available as a day or evening visitor pass even without staying at the resort. Most tour packages bundle it with dinner. Genuinely unforgettable at night.</p>
-            <div class="exc-tags">
-              <span class="exc-tag hi">Don't Skip This</span>
-              <span class="exc-tag">~$70–90/person day pass</span>
-              <span class="exc-tag">Evening best</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CAR RENTAL -->
-      <div class="cat-header cat-road">
-        <div class="cat-icon">🚙</div>
-        <div class="cat-title">Car Rental</div>
-        <div class="cat-divider"></div>
-      </div>
-      <div class="car-card">
-        <h3>Get a 4x4 — especially in August.</h3>
-        <p>August is green (rainy) season. Roads in and around the Nicoya Peninsula are unpaved, potholed, and can flood after heavy afternoon rains. A standard sedan will limit where you can go. Every operator recommends a 4WD — the added cost is negligible vs. the freedom it provides for day trips to Montezuma, Cabo Blanco, and beyond.</p>
-        <div class="car-grid">
-          <div class="car-col">
-            <div class="car-col-label">Best Vehicle</div>
-            <p><strong>4x4 SUV</strong> — Hyundai Creta, Suzuki Jimny, or equivalent. High clearance, automatic preferred for group comfort. Fits 4–5 plus luggage comfortably.</p>
-          </div>
-          <div class="car-col">
-            <div class="car-col-label">Where to Pick Up</div>
-            <p>Pick up at <strong>Liberia (LIR)</strong> airport — closest to all three properties. Adobe Rent a Car and Jumbo Car both operate there. Adobe has the largest fleet in Costa Rica.</p>
-          </div>
-          <div class="car-col">
-            <div class="car-col-label">Cost in August</div>
-            <p>Green season = lowest rates of the year. <strong>~$400–600 USD/week</strong> for a 4WD SUV. Book early — 4x4s are in higher demand than sedans and go fast.</p>
-          </div>
-        </div>
-        <div class="car-pills">
-          <span class="car-pill">Adobe Rent a Car — Largest Fleet in CR</span>
-          <span class="car-pill">Jumbo Car — No Hidden Fees</span>
-          <span class="car-pill">Budget / Avis at LIR Airport</span>
-          <span class="car-pill dim">~$400–600 USD/week for 4WD SUV in August</span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- ═══ SECTION 06 — SAMPLE ITINERARY ═══ -->
-    <div class="section">
-      <div class="section-header">
-        <span class="section-num">06</span>
-        <h2 class="section-title">Sample 8-Night Itinerary</h2>
-      </div>
-
-      <div class="banner">
-        Built around August 8–15. Anchored by the Arenal overnight in the middle. Lighter days on either end. Flex day built in to adjust for weather and energy. Applies to all three properties — swap Tamarindo nightlife for in-resort entertainment if you go with Planet Hollywood or Azura.
-      </div>
-
-      <div class="itinerary">
-        <div class="itin-head">
-          <h3>August 8–15, 2025 · Guanacaste Base</h3>
-          <p>Group of 4 Adults · 4x4 rental recommended for excursion days</p>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">8</div></div>
-          <div class="day-content">
-            <div class="day-title">Arrival Day — Fly into Liberia (LIR)</div>
-            <div class="day-desc">Pick up 4x4 at the airport. Drive to your resort — 35 min (Planet Hollywood), 1 hr (Occidental Tamarindo), 2.5 hrs (Azura). Check in, pool, first all-inclusive dinner. Walk Tamarindo town if staying at Occidental.</div>
-            <div class="day-tags"><span class="day-tag">Travel</span><span class="day-tag">4x4 Pickup</span><span class="day-tag">Check-In</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">9</div></div>
-          <div class="day-content">
-            <div class="day-title">Orientation + Canopy Zip-Line</div>
-            <div class="day-desc">Morning at the resort — pool, breakfast, explore the grounds. Afternoon: 2–3 hour zip-line canopy tour through jungle with howler monkeys and ocean views. Evening: resort dinner, then nightlife in Tamarindo (Occidental) or on-property entertainment.</div>
-            <div class="day-tags"><span class="day-tag">🌿 Jungle</span><span class="day-tag">Zip-Line</span><span class="day-tag">Nightlife</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">10</div></div>
-          <div class="day-content">
-            <div class="day-title">Montezuma Waterfall Road Trip</div>
-            <div class="day-desc">Self-drive day by 4x4 toward Montezuma — river crossings, mountaintop views, deserted beaches along the way. 1 km jungle hike to the falls. Swim in natural pools, optional 25m cliff jump. Cold Imperial at a beachside bar on the way back. Evening: bioluminescent night kayak in Paquera Bay.</div>
-            <div class="day-tags"><span class="day-tag">🌿 Waterfall</span><span class="day-tag">🌊 Night Kayak</span><span class="day-tag">Big Day</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">11</div></div>
-          <div class="day-content">
-            <div class="day-title">Tortuga Island Snorkel Cruise</div>
-            <div class="day-desc">Full-day boat cruise to Isla Tortuga. Snorkel the volcanic reef, beach time, fresh fruit and lunch on board. Back by 4 pm for resort pool and all-inclusive dinner. Easy, scenic day — perfect mid-trip reset.</div>
-            <div class="day-tags"><span class="day-tag">🌊 Water</span><span class="day-tag">Snorkel</span><span class="day-tag">Full Day</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">12–13</div></div>
-          <div class="day-content">
-            <div class="day-title">Arenal Volcano Overnight ✦ Signature Trip</div>
-            <div class="day-desc">Fly from Liberia to La Fortuna (~40 min domestic) or drive ~3.5 hrs. Day 12: La Fortuna Waterfall (500 steps, incredible swim), Arenal base hike with naturalist guide, Don Juan coffee and chocolate tour. Evening: Tabacon Hot Springs — 20+ thermal pools lit up at night until close. Day 13: Lake Arenal kayak with volcano backdrop, fly or drive back in the afternoon.</div>
-            <div class="day-tags"><span class="day-tag hi">🌋 Volcano</span><span class="day-tag hi">☕ Coffee Tour</span><span class="day-tag">Waterfall</span><span class="day-tag">Hot Springs</span><span class="day-tag">Kayak</span><span class="day-tag">2 Days</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">14</div></div>
-          <div class="day-content">
-            <div class="day-title">Sportfishing Charter</div>
-            <div class="day-desc">Early morning private fishing charter off the Pacific coast — tuna, mahi-mahi, roosterfish. Back by noon. Afternoon at the resort pool. Evening: sunset drinks, then group dinner out in Tamarindo (Occidental guests) or on-property.</div>
-            <div class="day-tags"><span class="day-tag">🌊 Fishing</span><span class="day-tag">Private Charter</span><span class="day-tag">Resort Day</span></div>
-          </div>
-        </div>
-
-        <div class="day-row">
-          <div class="day-num"><div class="d">Aug</div><div class="n">15</div></div>
-          <div class="day-content">
-            <div class="day-title">Departure Day — Liberia (LIR)</div>
-            <div class="day-desc">Checkout. Return 4x4 at LIR. 35 min (Planet Hollywood), 1 hr (Occidental), 2.5 hrs (Azura). Pura Vida.</div>
-            <div class="day-tags"><span class="day-tag">Travel Day</span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div><!-- /body -->
-
-  <div class="footer">
-    <span>Pura Vida · 4 Adults · August 2025</span>
-    <span>Isiah's Group Trip · Costa Rica</span>
-  </div>
-
+<!-- ═══ CHAPTER DIVIDER ═══ -->
+<div class="chapter">
+  <div class="chapter-num">Part Two</div>
+  <h2>Excursion <em>Planner</em></h2>
+  <p>What to do between the pool and the sunset — from any of the three properties</p>
 </div>
+
+<main>
+
+  <!-- ═══ SECTION 05 — EXCURSIONS ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">05</span>
+      <h2>Excursion Wishlist — Built Out</h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="banner">
+      Every excursion on this list is achievable from all three properties. <strong>Arenal Volcano</strong> and a proper <strong>coffee tour</strong> require an overnight or long day trip (4–5 hrs from Guanacaste, or a short domestic flight). Everything else — waterfall, kayaking, ATV — is within 30–90 min. <strong>A rental 4x4 unlocks the region on your own terms.</strong>
+    </div>
+
+    <!-- WATER -->
+    <div class="cat-header cat-water">
+      <div class="cat-icon">🌊</div>
+      <div class="cat-title">Water &amp; Kayaking</div>
+      <div class="cat-div"></div>
+    </div>
+    <div class="exc-grid">
+      <div class="exc-card">
+        <div class="exc-top water">
+          <div class="exc-title">Bioluminescent Night Kayak</div>
+          <div class="exc-sub">Paquera Bay · Evening · ~$65/person</div>
+        </div>
+        <div class="exc-body">
+          <p>Paddle after dark while bioluminescent algae light up the water around your kayak — one of the few year-round spots on earth for this. Tours run 5:45–7:30 pm. Group size capped at 10; you could book the whole boat privately.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Year-Round</span>
+            <span class="exc-tag">~$65/person</span>
+            <span class="exc-tag">2 hrs</span>
+            <span class="exc-tag">Evening</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top water">
+          <div class="exc-title">Tortuga Island Snorkel Cruise</div>
+          <div class="exc-sub">Nicoya Gulf · Full day · ~$85–110/person</div>
+        </div>
+        <div class="exc-body">
+          <p>Boat cruise to Isla Tortuga — volcanic reef snorkeling with angelfish, moray eels, and spotted eagle rays. White sand beach time and fresh fruit included. One of the best full-day excursions from the Nicoya Peninsula.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Top Rated</span>
+            <span class="exc-tag">~$85–110/person</span>
+            <span class="exc-tag">Full day</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top water">
+          <div class="exc-title">Lake Arenal Kayak</div>
+          <div class="exc-sub">La Fortuna · Combine with Volcano Day</div>
+        </div>
+        <div class="exc-body">
+          <p>Costa Rica's largest lake at the foot of Arenal Volcano — kayaking or SUP with the volcano as your backdrop. Best combined with the Arenal overnight. Sunset boat cruises also available.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">Combine w/ Volcano</span>
+            <span class="exc-tag">~$60/person</span>
+            <span class="exc-tag">Half day</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top water">
+          <div class="exc-title">Private Sportfishing Charter</div>
+          <div class="exc-sub">Pacific Coast · 4–8 hrs · ~$600–900 whole boat</div>
+        </div>
+        <div class="exc-body">
+          <p>Private inshore charter targeting yellowfin tuna, mahi-mahi, roosterfish, and wahoo. Look for dolphins and whales on the way out — common in August. Split 4 ways, very reasonable.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">Private Charter</span>
+            <span class="exc-tag">~$150–225pp split 4</span>
+            <span class="exc-tag">Morning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WATERFALL & JUNGLE -->
+    <div class="cat-header cat-jungle">
+      <div class="cat-icon">🌿</div>
+      <div class="cat-title">Waterfalls &amp; Jungle</div>
+      <div class="cat-div"></div>
+    </div>
+    <div class="exc-grid">
+      <div class="exc-card">
+        <div class="exc-top jungle">
+          <div class="exc-title">Montezuma Waterfalls</div>
+          <div class="exc-sub">Montezuma Village · 45 min · Free entry</div>
+        </div>
+        <div class="exc-body">
+          <p>Three cascading falls with natural swimming pools — the most famous waterfall on the Nicoya Peninsula. A 1 km jungle hike from the road. Climb to upper pools for 25m cliff jumping. The road trip itself is half the experience: river crossings, mountaintop ocean views, deserted beaches.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Bucket List</span>
+            <span class="exc-tag">Free (~$1.50 upper)</span>
+            <span class="exc-tag">Half day</span>
+            <span class="exc-tag">Bring water shoes</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top jungle">
+          <div class="exc-title">La Fortuna Waterfall</div>
+          <div class="exc-sub">La Fortuna · Combine with Volcano</div>
+        </div>
+        <div class="exc-body">
+          <p>A dramatic 70m cascade into a crystal-clear pool at the base of Arenal Volcano. 500 steps down (and back up). Best combined with the Arenal day trip — combo tours include the volcano hike, hanging bridges, and hot springs all in one day.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">Combine w/ Volcano</span>
+            <span class="exc-tag">~$20 entry</span>
+            <span class="exc-tag">Full day</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top jungle">
+          <div class="exc-title">Canopy Zip-Line</div>
+          <div class="exc-sub">Cabo Blanco / Rincón de la Vieja · ~$55–75/person</div>
+        </div>
+        <div class="exc-body">
+          <p>Nearly a mile of zip-line through jungle canopy bordering Costa Rica's first protected reserve. 11 platforms high in the trees, ocean views, regular howler monkey sightings. Planet Hollywood guests have direct access to the Rincón de la Vieja adventure centre.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">~$55–75/person</span>
+            <span class="exc-tag">2–3 hrs</span>
+            <span class="exc-tag">All levels</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top jungle">
+          <div class="exc-title">Wildlife Refuge Guided Tour</div>
+          <div class="exc-sub">Curú / Cabo Blanco · Private · ~$80/person</div>
+        </div>
+        <div class="exc-body">
+          <p>Private guided tour with a certified naturalist through secluded beach trails — howler monkeys, scarlet macaws, iguanas, coatis. Fully customizable. Pairs perfectly with the bioluminescent night kayak for a full nature day.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">Private Tour</span>
+            <span class="exc-tag">~$80/person</span>
+            <span class="exc-tag">Half day</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COFFEE -->
+    <div class="cat-header cat-coffee">
+      <div class="cat-icon">☕</div>
+      <div class="cat-title">Coffee Tour</div>
+      <div class="cat-div"></div>
+    </div>
+    <div class="exc-grid">
+      <div class="exc-card">
+        <div class="exc-top coffee">
+          <div class="exc-title">Don Juan Coffee &amp; Chocolate Tour</div>
+          <div class="exc-sub">La Fortuna · Best combined with Arenal</div>
+        </div>
+        <div class="exc-body">
+          <p>Hands-on farm experience covering the full bean-to-cup journey — plus cacao and sugar cane. The Arenal highlands produce some of Costa Rica's finest coffee. Guided tasting of multiple roasts. Best positioned as part of the Arenal overnight so you're not making the trip twice.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Best Combo w/ Volcano</span>
+            <span class="exc-tag">~$35–50/person</span>
+            <span class="exc-tag">2–3 hrs</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top coffee">
+          <div class="exc-title">Café Monteverde Cloud Forest Tour</div>
+          <div class="exc-sub">Monteverde · 5 hrs from Guanacaste</div>
+        </div>
+        <div class="exc-body">
+          <p>Generations-old coffee farm in the misty cloud forest — volcanic soil, high altitude, family traditions over a century old. One of the most atmospheric coffee experiences in the country. Best as a Monteverde stopover rather than a standalone day trip from the coast.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">Best: Monteverde stopover</span>
+            <span class="exc-tag">~$30/person</span>
+            <span class="exc-tag">1.5 hrs tour</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VOLCANO -->
+    <div class="cat-header cat-volcano">
+      <div class="cat-icon">🌋</div>
+      <div class="cat-title">Volcano</div>
+      <div class="cat-div"></div>
+    </div>
+    <div class="exc-grid">
+      <div class="exc-card full">
+        <div class="exc-top volcano">
+          <div class="exc-title">Arenal Volcano — Full Day or Overnight ✦ Signature Trip</div>
+          <div class="exc-sub">La Fortuna · ~3.5–4 hrs drive or short domestic flight from Guanacaste</div>
+        </div>
+        <div class="exc-body">
+          <p>Costa Rica's most iconic volcano. Guided rainforest walks along lava flows, hanging bridges through the canopy, La Fortuna Waterfall, Don Juan coffee tour, and the Tabacon Hot Springs (20+ thermal pools volcano-fed, lit up at night). All doable in one big day or a comfortable overnight.</p>
+          <p><strong>Getting there from all three resorts:</strong> Drive ~3.5–4 hrs, or take a short domestic flight from Liberia (LIR) to La Fortuna — roughly 40 min. Flying is strongly recommended for a day trip without losing two days to the road.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Signature Experience</span>
+            <span class="exc-tag">Domestic flight ~$150–200pp each way</span>
+            <span class="exc-tag">Drive: 3.5–4 hrs from Guanacaste</span>
+            <span class="exc-tag">Best as overnight</span>
+            <span class="exc-tag">Hot springs incl. in most tours</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top volcano">
+          <div class="exc-title">Arenal Base Hike</div>
+          <div class="exc-sub">Arenal National Park · Guided · ~$50/person</div>
+        </div>
+        <div class="exc-body">
+          <p>Guided rainforest hike along old lava flows with a naturalist guide. Mostly flat to moderate. Wildlife spotting, flora education, volcano history. Go in the morning before clouds roll in.</p>
+          <div class="exc-tags">
+            <span class="exc-tag">~$50/person</span>
+            <span class="exc-tag">3–4 hrs</span>
+            <span class="exc-tag">Morning</span>
+          </div>
+        </div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-top volcano">
+          <div class="exc-title">Tabacon Hot Springs</div>
+          <div class="exc-sub">La Fortuna · Volcano-fed thermal pools</div>
+        </div>
+        <div class="exc-body">
+          <p>20+ naturally flowing thermal mineral springs at the base of Arenal — pools from 22–40°C. Available as a day or evening visitor pass. Most tour packages bundle with dinner. Genuinely unforgettable at night when the pools are lit up.</p>
+          <div class="exc-tags">
+            <span class="exc-tag hi">Don't Skip</span>
+            <span class="exc-tag">~$70–90/person day pass</span>
+            <span class="exc-tag">Evening best</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAR RENTAL -->
+    <div class="cat-header cat-road">
+      <div class="cat-icon">🚙</div>
+      <div class="cat-title">Car Rental</div>
+      <div class="cat-div"></div>
+    </div>
+    <div class="car-card">
+      <h3>Get a 4x4 — especially in August.</h3>
+      <p>August is green (rainy) season. Roads across Guanacaste can be unpaved, potholed, and flood after heavy afternoon rains. A standard sedan will limit where you can go. Every local operator recommends 4WD — the added cost is minimal vs. the freedom it provides for day trips to Montezuma, Cabo Blanco, and beyond.</p>
+      <div class="car-grid">
+        <div>
+          <div class="car-col-label">Best Vehicle</div>
+          <p class="car-col"><strong>4x4 SUV</strong> — Hyundai Creta or Suzuki Jimny. High clearance, automatic preferred for group comfort. Fits 4 adults plus luggage.</p>
+        </div>
+        <div>
+          <div class="car-col-label">Where to Pick Up</div>
+          <p class="car-col">Pick up at <strong>Liberia (LIR)</strong> airport — closest to all three properties. Adobe Rent a Car and Jumbo Car both operate there.</p>
+        </div>
+        <div>
+          <div class="car-col-label">Cost in August</div>
+          <p class="car-col">Green season = lowest rates of the year. <strong>~$400–600 USD/week</strong> for a 4WD SUV. Book early — 4x4s go fast.</p>
+        </div>
+      </div>
+      <div class="car-pills">
+        <span class="car-pill">Adobe Rent a Car — Largest Fleet in CR</span>
+        <span class="car-pill">Jumbo Car — No Hidden Fees</span>
+        <span class="car-pill">Budget / Avis at LIR Airport</span>
+        <span class="car-pill dim">~$400–600 USD/week for 4WD SUV in August</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 06 — ITINERARY ═══ -->
+  <div class="section">
+    <div class="sh">
+      <span class="sh-num">06</span>
+      <h2>Sample 8-Night Itinerary</h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="banner">
+      Built around <strong>August 8–15</strong>. Anchored by the Arenal overnight in the middle. Lighter days on either end. Flex day built in for weather and energy. Applies to all three properties — swap Tamarindo nightlife for in-resort entertainment if you go with Planet Hollywood or Azura.
+    </div>
+    <div class="itinerary">
+      <div class="itin-head">
+        <h3>August 8–15, 2025 · Guanacaste Base</h3>
+        <p>4 Adults · 4x4 rental recommended for excursion days</p>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">8</div></div>
+        <div class="day-content">
+          <div class="day-title">Arrival — Fly into Liberia (LIR)</div>
+          <div class="day-desc">Pick up 4x4 at the airport. Drive to resort — 35 min (Planet Hollywood), 1 hr (Occidental Tamarindo), 2.5 hrs (Azura). Check in, pool, first all-inclusive dinner. Walk Tamarindo town if staying at Occidental.</div>
+          <div class="day-tags"><span class="day-tag">Travel</span><span class="day-tag">4x4 Pickup</span><span class="day-tag">Check-In</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">9</div></div>
+        <div class="day-content">
+          <div class="day-title">Orientation + Canopy Zip-Line</div>
+          <div class="day-desc">Morning at the resort — pool, breakfast, explore the grounds. Afternoon: 2–3 hour zip-line canopy tour through jungle with howler monkeys and ocean views. Evening: resort dinner then nightlife in Tamarindo (Occidental) or on-property entertainment.</div>
+          <div class="day-tags"><span class="day-tag">🌿 Jungle</span><span class="day-tag">Zip-Line</span><span class="day-tag">Nightlife</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">10</div></div>
+        <div class="day-content">
+          <div class="day-title">Montezuma Waterfall Road Trip</div>
+          <div class="day-desc">Self-drive by 4x4 toward Montezuma — river crossings, mountaintop views, deserted beaches along the way. 1 km jungle hike to the falls. Swim in natural pools, optional 25m cliff jump. Cold Imperial at a beachside bar on the way back. Evening: bioluminescent night kayak in Paquera Bay.</div>
+          <div class="day-tags"><span class="day-tag">🌿 Waterfall</span><span class="day-tag">🌊 Night Kayak</span><span class="day-tag">Big Day</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">11</div></div>
+        <div class="day-content">
+          <div class="day-title">Tortuga Island Snorkel Cruise</div>
+          <div class="day-desc">Full-day boat cruise to Isla Tortuga. Snorkel the volcanic reef, beach time, fresh fruit and lunch on board. Back by 4 pm for resort pool and all-inclusive dinner. Easy, scenic day — perfect mid-trip reset.</div>
+          <div class="day-tags"><span class="day-tag">🌊 Water</span><span class="day-tag">Snorkel</span><span class="day-tag">Full Day</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">12–13</div></div>
+        <div class="day-content">
+          <div class="day-title">Arenal Volcano Overnight ✦ Signature Trip</div>
+          <div class="day-desc">Fly from Liberia to La Fortuna (~40 min domestic) or drive ~3.5 hrs. Day 12: La Fortuna Waterfall (500 steps, incredible swim), Arenal base hike with naturalist guide, Don Juan coffee and chocolate tour. Evening: Tabacon Hot Springs — 20+ thermal pools lit up at night until close. Day 13: Lake Arenal kayak with volcano backdrop, fly or drive back in the afternoon.</div>
+          <div class="day-tags"><span class="day-tag hi">🌋 Volcano</span><span class="day-tag hi">☕ Coffee Tour</span><span class="day-tag">Waterfall</span><span class="day-tag">Hot Springs</span><span class="day-tag">Kayak</span><span class="day-tag">2 Days</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">14</div></div>
+        <div class="day-content">
+          <div class="day-title">Sportfishing Charter</div>
+          <div class="day-desc">Early morning private fishing charter off the Pacific coast — tuna, mahi-mahi, roosterfish. Back by noon. Afternoon at the resort pool. Evening: sunset drinks, then group dinner out in Tamarindo (Occidental guests) or on-property.</div>
+          <div class="day-tags"><span class="day-tag">🌊 Fishing</span><span class="day-tag">Private Charter</span><span class="day-tag">Resort Afternoon</span></div>
+        </div>
+      </div>
+      <div class="day-row">
+        <div class="day-num"><div class="d">Aug</div><div class="n">15</div></div>
+        <div class="day-content">
+          <div class="day-title">Departure — Liberia (LIR)</div>
+          <div class="day-desc">Checkout. Return 4x4 at LIR. 35 min (Planet Hollywood), 1 hr (Occidental), 2.5 hrs (Azura). Pura Vida.</div>
+          <div class="day-tags"><span class="day-tag">Travel Day</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Pura Vida · 4 Adults · August 8–15, 2025</span>
+  <span>Isiah's Group Trip · Costa Rica</span>
+</footer>
+
 </body>
 </html>
